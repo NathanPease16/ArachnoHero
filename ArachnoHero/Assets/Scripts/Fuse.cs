@@ -12,9 +12,13 @@ public class Fuse : MonoBehaviour
     private float startY;
     private float currentTime;
 
+    [Header("References")]
+    private Energy energy;
+
     void Awake()
     {
         startY = transform.position.y;
+        energy = GameObject.Find("Player").GetComponent<Energy>();
     }
 
     void Update()
@@ -23,5 +27,14 @@ public class Fuse : MonoBehaviour
         currentTime += Time.deltaTime;
 
         transform.position = new Vector3(transform.position.x, startY + y, transform.position.z);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && !energy.HasFuse)
+        {
+            energy.HasFuse = true;
+            Destroy(this.gameObject);
+        }
     }
 }
