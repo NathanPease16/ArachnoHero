@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 165130760}
   - component: {fileID: 165130758}
   - component: {fileID: 165130761}
+  - component: {fileID: 165130762}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -375,6 +376,20 @@ MonoBehaviour:
   maxRotation: 85
   tiltRotation: 5
   tiltSpeed: 1
+--- !u!114 &165130762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165130753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cf2d736d3b6b44bae257b6f274e246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shockForce: 20
+  cooldown: 2
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
