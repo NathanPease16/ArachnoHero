@@ -439,7 +439,7 @@ MonoBehaviour:
   maxSpeed: 10
   dampenFactor: 3
   jumpForce: 5
-  midairControl: 0.5
+  midairControl: 0.1
   sphereRadius: 0.15
   jumpMask:
     serializedVersion: 2
