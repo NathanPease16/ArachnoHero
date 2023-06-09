@@ -447,6 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872289a0a8bc6ad4fab31a67d9dfd9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handPosition: {x: 0, y: 0, z: 0}
   maxGrappleDist: 40
   grappleStrength: 0.6
-  energyUsed: 40
+  grappleShrink: 0.1
+  energyUsed: 2

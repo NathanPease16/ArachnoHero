@@ -10,8 +10,10 @@ public class Grappling : MonoBehaviour
     */
     
     [Header("Attributes")]
+    [SerializeField] private Vector3 handPosition;
     [SerializeField] private float maxGrappleDist;
     [SerializeField] private float grappleStrength;
+    [SerializeField] private float grappleShrink;
     [SerializeField] private float energyUsed;
 
     [Header("References")]
@@ -21,7 +23,9 @@ public class Grappling : MonoBehaviour
     private LineRenderer line;
 
     // Variables
+    private RaycastHit grappleHit;
     private Vector3 grapplePoint;
+    private float idealLength;
 
     void Awake()
     {
@@ -35,41 +39,58 @@ public class Grappling : MonoBehaviour
 
     void Update()
     {
-        Grapple();
+        StartStopGrapple();
         GrappleLine();
+        // Use energy
+        if(grapplePoint != Vector3.zero) {energy.UseEnergy(energyUsed * Time.deltaTime);}
+    }
+
+    void FixedUpdate()
+    {
+        Grapple();
+    }
+
+    private void StartStopGrapple()
+    {
+        // Start
+        if(Input.GetMouseButtonDown(1) && grapplePoint == Vector3.zero) {
+            if(Physics.Raycast(origin: transform.position, direction: camera.forward, hitInfo: out grappleHit, maxDistance: maxGrappleDist)) {
+                grapplePoint = grappleHit.point;
+                idealLength = grappleHit.distance;
+                line.positionCount = 2;
+            } else {
+                Debug.Log("Out of range!");
+            }
+        }
+
+        // Stop
+        if(!(Input.GetMouseButton(1) && energy.HasEnoughEnergy(energyUsed))) {
+            grapplePoint = Vector3.zero;
+            line.positionCount = 0;
+        }
     }
 
     private void Grapple()
     {
-        RaycastHit hit;
-        // Start/stop grapple
-        if(grapplePoint == Vector3.zero) {
-            // Start grapple
-            if(Input.GetMouseButtonDown(1) && energy.HasEnoughEnergy(energyUsed)) {
-                if(Physics.Raycast(origin: transform.position, direction: camera.forward, hitInfo: out hit, maxDistance: maxGrappleDist)) {
-                    grapplePoint = hit.point;
-                    line.positionCount = 2;
-                } else {
-                    Debug.Log("Out of range!");
-                }
-            }
-        } else {
-            // Handle grapple
+        if(grapplePoint != Vector3.zero) {
             Vector3 toPoint = grapplePoint - transform.position;
-            rigidbody.AddForce(toPoint * grappleStrength);
-
-            // Stop grapple
-            if(Input.GetMouseButtonDown(1)) {
-                grapplePoint = Vector3.zero;
-                line.positionCount = 0;
-            }
+            float currentLength = toPoint.magnitude;
+            idealLength -= grappleShrink;
+            Vector3 toIdealPoint = toPoint.normalized * (currentLength - idealLength);
+            rigidbody.AddForce(toIdealPoint * grappleStrength);
+            //if(currentLength < idealLength) {idealLength = currentLength;}
         }
     }
 
     private void GrappleLine()
     {
         if(grapplePoint != Vector3.zero) {
-            line.SetPositions(new Vector3[] {transform.position, grapplePoint});
+            line.SetPositions(new Vector3[] {transform.TransformPoint(handPosition), grapplePoint});
         }
+    }
+
+    public bool IsGrappling()
+    {
+        return grapplePoint != Vector3.zero;
     }
 }
