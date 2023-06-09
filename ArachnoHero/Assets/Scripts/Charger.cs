@@ -11,6 +11,8 @@ public class Charger : MonoBehaviour
     [SerializeField] private bool powered;
     private bool playerInRadius;
 
+    public bool Powered { get { return powered; } set { powered = value; } }
+
     [Header("References")]
     private Energy energy;
 
