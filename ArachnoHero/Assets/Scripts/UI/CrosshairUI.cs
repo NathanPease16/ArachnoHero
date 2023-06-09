@@ -22,10 +22,14 @@ public class CrosshairUI : MonoBehaviour
     {
         bool wasLocked = isLocked;
         isLocked = grapple.CanGrapple();
-        if(wasLocked != isLocked) {
-            Debug.Log("aaa");
-            if(isLocked) {anim.Play("CrosshairLock");}
-            else {anim.Play("CrosshairUnlock");}
+        if(grapple.IsGrappling()) {
+            anim.Play("CrosshairActive");
+        } else {
+            if(wasLocked != isLocked) {
+                Debug.Log("aaa");
+                if(isLocked) {anim.Play("CrosshairLock");}
+                else {anim.Play("CrosshairUnlock");}
+            }
         }
     }
 }
