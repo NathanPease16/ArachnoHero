@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
 
     [Header("Jumping")]
     [SerializeField] private float jumpForce;
+    [SerializeField] private float midairControl;
     [SerializeField] private float sphereRadius;
     [SerializeField] private LayerMask jumpMask;
 
@@ -33,15 +34,16 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        Vector3 move = (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized;
+        Vector3 move = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal")).normalized;
         Vector3 currentVelocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
-        Vector3 idealVelocity = move * maxSpeed;
+        Vector3 idealVelocity = (IsGrounded() ? move * maxSpeed : Vector3.Lerp(currentVelocity, move * maxSpeed, midairControl));
         Vector3 deltaVelocity = idealVelocity - currentVelocity;
         if(deltaVelocity.magnitude > moveSpeed) {
             deltaVelocity = Vector3.ClampMagnitude(deltaVelocity, moveSpeed);
         }
-        Debug.Log($"Current Velocity: {currentVelocity.magnitude}    Ideal Velocity: {idealVelocity.magnitude}");
         rigidbody.AddForce(deltaVelocity);
+        
+        
     }
 
     private void Jump()
