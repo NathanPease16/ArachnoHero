@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cf2d736d3b6b44bae257b6f274e246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shockForce: 500
+  shockForce: 250
   energyUsed: 20
   weight: {x: 3.5, y: 1, z: 3.5}
 --- !u!114 &165130763
