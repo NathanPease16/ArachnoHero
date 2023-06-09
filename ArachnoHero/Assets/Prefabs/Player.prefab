@@ -384,7 +384,7 @@ MonoBehaviour:
   maxSpeed: 60
   stillFriction: 10
   movingFriction: 0
-  jumpForce: 10
+  jumpForce: 7
   midairControl: 0.5
   checkDistance: 0.001
   jumpMask:
@@ -447,8 +447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872289a0a8bc6ad4fab31a67d9dfd9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handPosition: {x: 0, y: 0, z: 0}
+  handPosition: {x: 0.6, y: 0, z: 0}
   maxGrappleDist: 40
-  grappleStrength: 0.6
+  grappleStrength: 10
   grappleShrink: 0.1
+  idealModifier: 0.8
   energyUsed: 2

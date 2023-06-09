@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     private new Collider collider;
     private Transform mainCamera;
     private Transform groundCheck;
+    private Grappling grapple;
 
     // Attributes
     [Header("Moving")]
@@ -26,6 +27,7 @@ public class Movement : MonoBehaviour
         collider = GetComponent<Collider>();
         mainCamera = Camera.main.transform;
         groundCheck = transform.Find("Ground Check");
+        grapple = GetComponent<Grappling>();
     }
 
     void Update()
@@ -44,7 +46,7 @@ public class Movement : MonoBehaviour
         Vector3 currentVelocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
         Vector3 idealVelocity = (IsGrounded() ? move * maxSpeed : Vector3.Lerp(currentVelocity, move * maxSpeed, midairControl));
         Vector3 deltaVelocity = idealVelocity - currentVelocity;
-        if(move.magnitude == 0) {
+        if(move.magnitude == 0 && !grapple.IsGrappling()) {
             collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
             collider.material.dynamicFriction = stillFriction;
         } else {

@@ -14,6 +14,7 @@ public class Grappling : MonoBehaviour
     [SerializeField] private float maxGrappleDist;
     [SerializeField] private float grappleStrength;
     [SerializeField] private float grappleShrink;
+    [SerializeField] private float idealModifier;
     [SerializeField] private float energyUsed;
 
     [Header("References")]
@@ -54,9 +55,9 @@ public class Grappling : MonoBehaviour
     {
         // Start
         if(Input.GetMouseButtonDown(1) && grapplePoint == Vector3.zero) {
-            if(Physics.Raycast(origin: transform.position, direction: camera.forward, hitInfo: out grappleHit, maxDistance: maxGrappleDist)) {
+            if(Physics.Raycast(origin: camera.position, direction: camera.forward, hitInfo: out grappleHit, maxDistance: maxGrappleDist)) {
                 grapplePoint = grappleHit.point;
-                idealLength = grappleHit.distance;
+                idealLength = grappleHit.distance*idealModifier;
                 line.positionCount = 2;
             } else {
                 Debug.Log("Out of range!");
