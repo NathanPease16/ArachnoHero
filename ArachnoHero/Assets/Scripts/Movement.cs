@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         Vector3 move = (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")).normalized;
-        Vector3 currentVelocity = (rigidbody.velocity.x, 0, rigidbody.velocity.z);
+        Vector3 currentVelocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
         Vector3 idealVelocity = move * maxSpeed;
         Vector3 deltaVelocity = idealVelocity - currentVelocity;
         if(deltaVelocity.magnitude > moveSpeed) {deltaVelocity = Vector3.ClampMagnitude(deltaVelocity, moveSpeed);}
