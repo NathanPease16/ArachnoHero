@@ -6,8 +6,13 @@ public class Energy : MonoBehaviour
     [SerializeField] private float maxEnergy;
 
     [Header("States")]
-    private float currentEnergy;
-    public float CurrentEnergy {get { return currentEnergy; } }
+    [SerializeField]  float currentEnergy;
+
+    public float MaxEnergy { get {return maxEnergy; } }
+    public float CurrentEnergy { get { return currentEnergy; } }
+
+    public delegate void EnergyAmountUpdate();
+    public event EnergyAmountUpdate updateEnergy;
 
     void Awake()
     {
@@ -20,6 +25,8 @@ public class Energy : MonoBehaviour
 
         if (amount < 0)
             currentEnergy = 0;
+
+        updateEnergy?.Invoke();
     }
 
     public void Charge(float amount)
@@ -28,6 +35,8 @@ public class Energy : MonoBehaviour
 
         if (currentEnergy > maxEnergy)
             currentEnergy = maxEnergy;
+
+        updateEnergy?.Invoke();
     }
 
     public bool HasEnoughEnergy(float amount)
