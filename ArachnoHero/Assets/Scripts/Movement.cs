@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float midairControl;
-    [SerializeField] private float sphereRadius;
+    [SerializeField] private float checkDistance;
     [SerializeField] private LayerMask jumpMask;
 
     void Awake()
@@ -58,13 +58,20 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
+
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded()) 
+        {
             rigidbody.AddForce(Vector3.up*jumpForce, ForceMode.Impulse);
         }
     }
 
     private bool IsGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, sphereRadius, jumpMask);
+        float scaleX = transform.localScale.x;
+        float scaleZ = transform.localScale.z;
+
+        Vector3 halfExtents = new Vector3(scaleX/2.0f, checkDistance, scaleZ/2.0f);
+        return Physics.CheckBox(groundCheck.position, halfExtents, Quaternion.identity, jumpMask);
+        //return Physics.CheckSphere(groundCheck.position, sphereRadius, jumpMask);
     }
 }
