@@ -435,11 +435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702f599443670e84b97e479ee465238f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  maxSpeed: 10
-  dampenFactor: 3
-  jumpForce: 5
-  midairControl: 0.1
+  maxSpeed: 60
+  stillFriction: 10
+  movingFriction: 0
+  jumpForce: 10
+  midairControl: 0.5
   sphereRadius: 0.15
   jumpMask:
     serializedVersion: 2

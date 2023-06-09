@@ -4,14 +4,15 @@ public class Movement : MonoBehaviour
 {
     // References
     private new Rigidbody rigidbody;
+    private new Collider collider;
     private Transform mainCamera;
     private Transform groundCheck;
 
     // Attributes
     [Header("Moving")]
-    [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
-    [SerializeField] private float dampenFactor;
+    [SerializeField] private float stillFriction;
+    [SerializeField] private float movingFriction;
 
     [Header("Jumping")]
     [SerializeField] private float jumpForce;
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
         mainCamera = Camera.main.transform;
         groundCheck = transform.Find("Ground Check");
     }
@@ -42,8 +44,12 @@ public class Movement : MonoBehaviour
         Vector3 currentVelocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
         Vector3 idealVelocity = (IsGrounded() ? move * maxSpeed : Vector3.Lerp(currentVelocity, move * maxSpeed, midairControl));
         Vector3 deltaVelocity = idealVelocity - currentVelocity;
-        if(deltaVelocity.magnitude > moveSpeed) {
-            deltaVelocity = Vector3.ClampMagnitude(deltaVelocity, moveSpeed);
+        if(move.magnitude == 0) {
+            collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
+            collider.material.dynamicFriction = stillFriction;
+        } else {
+            collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
+            collider.material.dynamicFriction = movingFriction;
         }
         rigidbody.AddForce(deltaVelocity);
         
