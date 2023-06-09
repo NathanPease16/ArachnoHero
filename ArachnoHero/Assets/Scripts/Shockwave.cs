@@ -11,36 +11,41 @@ public class Shockwave : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float shockForce;
-    [SerializeField] private float cooldown;
-
-    [Header("States")]
-    private float currentTime;
+    [SerializeField] private float energyUsed;
+    [SerializeField] private Vector3 weight;
 
     [Header("References")]
     private new Rigidbody rigidbody;
     private new Transform camera;
+    private Energy energy;
 
     void Awake()
     {
-        currentTime = cooldown;
         rigidbody = GetComponent<Rigidbody>();
+        energy = GetComponent<Energy>();
         camera = Camera.main.transform;
     }
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-        Debug.Log(currentTime);
-
         Shock();
     }
 
     private void Shock()
     {
-        if (Input.GetMouseButtonDown(0) && currentTime >= cooldown)
+        bool mouse = Input.GetMouseButtonDown(0);
+        bool shift = Input.GetKeyDown(KeyCode.LeftShift);
+
+        if ((mouse || shift) && energy.HasEnoughEnergy(energyUsed))
         {
-            currentTime = 0;
-            rigidbody.AddForce(-camera.forward * shockForce, ForceMode.Force);
+            Vector3 weightedForward = new Vector3(camera.forward.x * weight.x, camera.forward.y * weight.y, camera.forward.z * weight.z);
+            
+            if (mouse)
+                rigidbody.AddForce(-weightedForward * shockForce, ForceMode.Force);
+            else
+                rigidbody.AddForce(weightedForward * shockForce, ForceMode.Force);
+
+            energy.UseEnergy(energyUsed);
         }
     }
 }
