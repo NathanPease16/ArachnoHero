@@ -7,9 +7,11 @@ public class Energy : MonoBehaviour
 
     [Header("States")]
     [SerializeField]  float currentEnergy;
+    [SerializeField]  bool hasFuse;
 
     public float MaxEnergy { get {return maxEnergy; } }
     public float CurrentEnergy { get { return currentEnergy; } }
+    public bool HasFuse { get { return hasFuse; } set { hasFuse = value; } }
 
     public delegate void EnergyAmountUpdate();
     public event EnergyAmountUpdate updateEnergy;
