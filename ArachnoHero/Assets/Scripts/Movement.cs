@@ -50,7 +50,18 @@ public class Movement : MonoBehaviour
 
         Vector3 moveDirection = transform.forward * forward + transform.right * right;
         moveDirection = new Vector3(moveDirection.x, up, moveDirection.z);
-        rigidbody.velocity = moveDirection;
+
+        float speedXZ = new Vector2(rigidbody.velocity.x, rigidbody.velocity.z).magnitude;
+
+        if (speedXZ <= maxSpeed)
+            rigidbody.AddForce(moveDirection);
+        else
+        {
+            Vector3 dirUpdate = new Vector3(rigidbody.velocity.x * moveDirection.normalized.x, 
+                                            rigidbody.velocity.y * moveDirection.normalized.y,
+                                            rigidbody.velocity.z * moveDirection.normalized.z); 
+            rigidbody.velocity = dirUpdate;
+        }
     }
 
     private bool IsGrounded()
