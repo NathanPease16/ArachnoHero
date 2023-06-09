@@ -59,7 +59,6 @@ public class Movement : MonoBehaviour
     private void Jump()
     {
         if(Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
-            Debug.Log("aaa");
             rigidbody.AddForce(Vector3.up*jumpForce, ForceMode.Impulse);
         }
     }
