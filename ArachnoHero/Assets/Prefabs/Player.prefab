@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702f599443670e84b97e479ee465238f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 60
+  maxSpeed: 40
   stillFriction: 10
   movingFriction: 0
   jumpForce: 7
@@ -420,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnergy: 100
   currentEnergy: 0
+  hasFuse: 0
 --- !u!114 &7568586444584339211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPosition: {x: 0.6, y: 0, z: 0}
-  maxGrappleDist: 40
+  maxGrappleDist: 24
   grappleStrength: 10
   grappleShrink: 0.1
   idealModifier: 0.8
