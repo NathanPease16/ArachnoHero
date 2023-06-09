@@ -90,6 +90,11 @@ public class Grappling : MonoBehaviour
         }
     }
 
+    public bool CanGrapple()
+    {
+        return Physics.Raycast(origin: camera.position, direction: camera.forward, maxDistance: maxGrappleDist);
+    }
+
     public bool IsGrappling()
     {
         return grapplePoint != Vector3.zero;
