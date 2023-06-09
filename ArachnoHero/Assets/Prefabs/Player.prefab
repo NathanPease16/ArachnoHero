@@ -386,7 +386,7 @@ MonoBehaviour:
   movingFriction: 0
   jumpForce: 10
   midairControl: 0.5
-  sphereRadius: 0.15
+  checkDistance: 0.001
   jumpMask:
     serializedVersion: 2
     m_Bits: 8
