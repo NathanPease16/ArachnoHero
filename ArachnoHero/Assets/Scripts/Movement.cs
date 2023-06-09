@@ -28,8 +28,12 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Move();
         Jump();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     private void Move()
