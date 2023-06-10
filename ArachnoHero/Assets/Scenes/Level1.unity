@@ -502,6 +502,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8868933855662360765, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: grappleMask.m_Bits
+      value: 59
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd0433931a0ccfe468de85ce849e826a, type: 3}
 --- !u!1 &415312700

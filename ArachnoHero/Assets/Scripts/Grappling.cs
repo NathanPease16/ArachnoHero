@@ -16,6 +16,7 @@ public class Grappling : MonoBehaviour
     [SerializeField] private float grappleShrink;
     [SerializeField] private float idealModifier;
     [SerializeField] private float energyUsed;
+    [SerializeField] private LayerMask grappleMask;
 
     [Header("References")]
     private new Rigidbody rigidbody;
@@ -55,10 +56,14 @@ public class Grappling : MonoBehaviour
     {
         // Start
         if(Input.GetMouseButtonDown(1) && grapplePoint == Vector3.zero) {
-            if(Physics.Raycast(origin: camera.position, direction: camera.forward, hitInfo: out grappleHit, maxDistance: maxGrappleDist)) {
-                grapplePoint = grappleHit.point;
-                idealLength = grappleHit.distance*idealModifier;
-                line.positionCount = 2;
+            if(Physics.Raycast(camera.position, camera.forward, out grappleHit, maxGrappleDist, grappleMask, QueryTriggerInteraction.Ignore)) {
+                if(grappleHit.transform.gameObject.GetComponent<Charger>() && grappleHit.transform.gameObject.GetComponent<Charger>().Powered) {
+                    grapplePoint = grappleHit.point;
+                    idealLength = grappleHit.distance*idealModifier;
+                    line.positionCount = 2;
+                } else {
+                    Debug.Log("Unpowered target!");
+                }
             } else {
                 Debug.Log("Out of range!");
             }
