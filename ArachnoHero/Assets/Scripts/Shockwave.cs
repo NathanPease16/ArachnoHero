@@ -19,6 +19,9 @@ public class Shockwave : MonoBehaviour
     private new Transform camera;
     private Energy energy;
 
+    // Variables
+    private float currentTime;
+
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -28,7 +31,8 @@ public class Shockwave : MonoBehaviour
 
     void Update()
     {
-        Shock();
+        currentTime += Time.deltaTime;
+        if(currentTime > 1f) {Shock();}
     }
 
     private void Shock()
