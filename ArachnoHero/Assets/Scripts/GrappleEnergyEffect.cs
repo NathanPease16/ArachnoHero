@@ -1,17 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrappleEnergyEffect : MonoBehaviour
 {
+    [Header("States")]
+    private float startRate;
+
     [Header("References")]
     private ParticleSystem particles;
+    private ParticleSystem.EmissionModule emissions;
+    private ParticleSystem.ShapeModule shape;
     private LineRenderer line;
 
     void Awake()
     {
         particles = GetComponent<ParticleSystem>();
         line = transform.parent.parent.GetComponent<LineRenderer>();
+
+        emissions = particles.emission;
+        shape = particles.shape;
+    }
+
+    void Start()
+    {
+        startRate = emissions.rateOverTime.constant;
     }
 
     void Update()
@@ -21,23 +32,35 @@ public class GrappleEnergyEffect : MonoBehaviour
 
     private void Render()
     {
-        if (line.positionCount < 2) { particles.Stop(); return; }
+        ParticleSystem.EmissionModule emissions = particles.emission;
+        
+        if (line.positionCount < 2) 
+        { 
+            particles.Stop();
+            particles.Clear();
+            return; 
+        }
+        
         Vector3 pos = line.GetPosition(1);
-        float distance = Vector3.Distance(transform.parent.parent.position, pos);
-
-        float x = particles.shape.scale.x;
-        float y = particles.shape.scale.y;
+        float distance = Vector3.Distance(transform.parent.position, pos);
 
         ParticleSystem.ShapeModule shape = particles.shape;
-        shape.scale = new Vector3(x, y, distance * (1.0f/transform.localScale.x));
 
-        float avgX = (transform.parent.parent.position.x + pos.x)/2.0f;
-        float avgY = (transform.parent.parent.position.y + pos.y)/2.0f;
-        float avgZ = (transform.parent.parent.position.z + pos.z)/2.0f;
-        Vector3 newPosition = new Vector3(avgX, avgY, avgZ);
-        //transform.position = 
-        Vector3 direction = pos - transform.parent.parent.position;
+        float x = shape.scale.x;
+        float y = shape.scale.y;
+
+        float scale = distance * (1.0f/transform.localScale.z);
+        shape.scale = new Vector3(x, y, scale);
+        
+        Vector3 newPosition = Vector3.Lerp(transform.parent.position, pos, 0.5f);
+        transform.position = newPosition;
+
+        Vector3 direction = pos - transform.parent.position;
         transform.parent.forward = direction;
+
+        ParticleSystem.MinMaxCurve curve = emissions.rateOverTime;
+        curve.constant = startRate * scale;
+        emissions.rateOverTime = curve;
 
         particles.Play();
     }
