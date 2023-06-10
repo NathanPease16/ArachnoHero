@@ -11,10 +11,13 @@ public class Shockwave : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float shockForce;
-    [SerializeField] private float energyUsed;
+    [SerializeField] private float shockwaveSpeed;
+    [SerializeField] private float shockwaveEnergy;
+    [SerializeField] private float dashEnergy;
     [SerializeField] private Vector3 weight;
 
     [Header("References")]
+    [SerializeField] private GameObject shockwave;
     private new Rigidbody rigidbody;
     private new Transform camera;
     private Energy energy;
@@ -40,16 +43,24 @@ public class Shockwave : MonoBehaviour
         bool mouse = Input.GetMouseButtonDown(0);
         bool shift = Input.GetKeyDown(KeyCode.LeftShift);
 
-        if ((mouse || shift) && energy.HasEnoughEnergy(energyUsed))
+        if ((mouse || shift) && energy.HasEnoughEnergy(shockwaveEnergy) && energy.HasEnoughEnergy(dashEnergy))
         {
             Vector3 weightedForward = new Vector3(camera.forward.x * weight.x, camera.forward.y * weight.y, camera.forward.z * weight.z);
             
             if (mouse)
+            {
                 rigidbody.AddForce(-weightedForward * shockForce, ForceMode.Force);
-            else
-                rigidbody.AddForce(weightedForward * shockForce, ForceMode.Force);
+                energy.UseEnergy(shockwaveEnergy);
 
-            energy.UseEnergy(energyUsed);
+                GameObject shock = Instantiate(shockwave, transform.position, Quaternion.identity);
+                Rigidbody shockRb = shock.GetComponent<Rigidbody>();
+                shockRb.velocity = camera.forward * shockwaveSpeed;
+            }
+            else
+            {
+                rigidbody.AddForce(weightedForward * shockForce, ForceMode.Force);
+                energy.UseEnergy(dashEnergy);
+            }
         }
     }
 }

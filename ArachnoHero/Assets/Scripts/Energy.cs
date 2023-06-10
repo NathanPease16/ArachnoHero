@@ -25,7 +25,7 @@ public class Energy : MonoBehaviour
     {
         currentEnergy -= amount;
 
-        if (amount < 0)
+        if (currentEnergy < 0)
             currentEnergy = 0;
 
         updateEnergy?.Invoke();

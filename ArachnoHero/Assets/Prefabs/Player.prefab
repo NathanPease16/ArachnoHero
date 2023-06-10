@@ -434,8 +434,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shockForce: 250
-  energyUsed: 20
+  shockwaveSpeed: 80
+  shockwaveEnergy: 10
+  dashEnergy: 20
   weight: {x: 3.5, y: 1, z: 3.5}
+  shockwave: {fileID: 6195301673877428511, guid: bb125ceb50558484798faf77f9587c70,
+    type: 3}
 --- !u!114 &8868933855662360765
 MonoBehaviour:
   m_ObjectHideFlags: 0
