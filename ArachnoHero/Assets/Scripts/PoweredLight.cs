@@ -22,7 +22,7 @@ public class PoweredLight : MonoBehaviour
     {
         charger = GetComponent<Charger>();
         renderer = GetComponent<Renderer>();
-        isOn = charger.Powered;
+        isOn = charger.powered;
     }
 
     void Start()
@@ -40,7 +40,7 @@ public class PoweredLight : MonoBehaviour
     void Update()
     {
         wasOn = isOn;
-        isOn = charger.Powered;
+        isOn = charger.powered;
         if(wasOn != isOn) {
             if(isOn) {
                 renderer.material = onMaterial;
