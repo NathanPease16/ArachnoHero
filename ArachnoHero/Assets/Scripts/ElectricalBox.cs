@@ -52,6 +52,6 @@ public class ElectricalBox : MonoBehaviour
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         fuse.SetActive(true);
         
-        charger.Powered = true;
+        charger.hasPower = true;
     }
 }

@@ -134,8 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flickers: 0
-  lights:
-  - {fileID: 0}
+  lights: []
   offMaterial: {fileID: 2100000, guid: 6133373ac7b409247b63f7487c84f7e3, type: 2}
   onMaterial: {fileID: 2100000, guid: 926d8f407bee917499a047aecba996a6, type: 2}
 --- !u!114 &6255793632285580335
@@ -152,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 1
-  powered: 0
-  parentCharger: {fileID: 0}
+  hasPower: 1
+  parentChargers: []
 --- !u!1 &1137402092871972112
 GameObject:
   m_ObjectHideFlags: 0
