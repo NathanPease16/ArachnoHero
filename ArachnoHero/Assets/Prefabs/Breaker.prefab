@@ -840,6 +840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5396663345195764251}
+  - component: {fileID: 1051375721366465738}
   m_Layer: 0
   m_Name: Breaker
   m_TagString: Untagged
@@ -880,6 +881,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1051375721366465738
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733032608373641377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0628219, y: 3.4265594, z: 1.9857283}
+  m_Center: {x: -0.18820405, y: 0.005214691, z: 0}
 --- !u!1 &5107669431354171284
 GameObject:
   m_ObjectHideFlags: 0

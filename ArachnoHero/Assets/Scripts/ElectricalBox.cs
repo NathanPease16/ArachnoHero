@@ -8,6 +8,8 @@ public class ElectricalBox : MonoBehaviour
     private Animator animator;
     private Energy energy;
     private Charger charger;
+    private GameObject red;
+    private GameObject green;
     private GameObject fuse;
 
     void Awake()
@@ -16,11 +18,15 @@ public class ElectricalBox : MonoBehaviour
         energy = GameObject.Find("Player").GetComponent<Energy>();
         charger = GetComponent<Charger>();
         fuse = transform.Find("Fuse").gameObject;
+
+        red = GameObject.Find("RedLight");
+        green = GameObject.Find("GreenLight");
     }
 
     void Start()
     {
         fuse.SetActive(false);
+        green.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other) 
@@ -50,7 +56,10 @@ public class ElectricalBox : MonoBehaviour
         animator.Play("ElectricalBox_Open");
 
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        
         fuse.SetActive(true);
+        red.SetActive(false);
+        green.SetActive(true);
         
         charger.hasPower = true;
     }
