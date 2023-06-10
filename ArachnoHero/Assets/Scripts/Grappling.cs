@@ -19,6 +19,7 @@ public class Grappling : MonoBehaviour
     [SerializeField] private LayerMask grappleMask;
 
     [Header("References")]
+    [SerializeField] private ParticleSystem particles;
     private new Rigidbody rigidbody;
     private new Transform camera;
     private Energy energy;
@@ -35,6 +36,7 @@ public class Grappling : MonoBehaviour
         camera = Camera.main.transform;
         energy = GetComponent<Energy>();
         line = GetComponent<LineRenderer>();
+        particles = GetComponent<ParticleSystem>();
 
         grapplePoint = Vector3.zero;
     }
@@ -45,6 +47,13 @@ public class Grappling : MonoBehaviour
         GrappleLine();
         // Use energy
         if(grapplePoint != Vector3.zero) {energy.UseEnergy(energyUsed * Time.deltaTime);}
+
+        //for (int i = 0; i < line.positionCount; i++)
+        //{
+            //Vector3 pointPosition = line.GetPosition(i);
+            //particles.transform.position = pointPosition;
+            //particles.Emit(1);
+        //}
     }
 
     void FixedUpdate()
