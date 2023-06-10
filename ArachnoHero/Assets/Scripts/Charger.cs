@@ -10,12 +10,9 @@ public class Charger : MonoBehaviour
     [SerializeField] private float timeToOn;
 
     [Header("States")]
-    private bool powered;
     public bool hasPower;
+    public bool powered;
     private bool playerInRadius;
-
-    public bool Powered { get { return powered; } set { powered = value; } }
-    public bool HasPower { get { return powered; } set { powered = value; } }
 
     [Header("References")]
     [SerializeField] private List<GameObject> parentChargers;
@@ -28,6 +25,11 @@ public class Charger : MonoBehaviour
     {
         energy = GameObject.Find("Player").GetComponent<Energy>();
         if(GetComponent<Animation>()) {animation = GetComponent<Animation>();}
+        timer = 0;
+    }
+
+    void Start()
+    {
         timer = 0;
     }
 
@@ -53,24 +55,28 @@ public class Charger : MonoBehaviour
         {
             energy.Charge(rechargeRate * Time.deltaTime);
         }
+
         if(parentChargers.Count == 0) {
-            powered = hasPower;
+            timer += (hasPower ? 1 : -1)*Time.deltaTime;
+            timer = Mathf.Clamp(timer, 0, 2*timeToOn);
+            powered = hasPower && timer >= timeToOn;
         } else if(parentChargers.Count == 1) {
-            bool ready = parentChargers[0].GetComponent<Charger>().hasPower && hasPower;
+            bool ready = parentChargers[0].GetComponent<Charger>().powered && hasPower;
+            if(name == "ElectricalBox") {Debug.Log(ready);}
             timer += (ready ? 1 : -1)*Time.deltaTime;
             timer = Mathf.Clamp(timer, 0, 2*timeToOn);
-            powered = timer >= timeToOn;
+            powered = ready && timer >= timeToOn;
             if(ready && !powered && animation != null) {animation.Play("Start");}
             if(powered && animation != null) {animation.Play("Active");}
         } else if(parentChargers.Count > 1) {
             bool allPowered = true;
             foreach(GameObject parent in parentChargers) {
-                if(!parent.GetComponent<Charger>().hasPower) {allPowered = false;}
+                if(!parent.GetComponent<Charger>().powered) {allPowered = false;}
             }
             bool ready = allPowered && hasPower;
             timer += (ready ? 1 : -1)*Time.deltaTime;
             timer = Mathf.Clamp(timer, 0, 2*timeToOn);
-            powered = timer >= timeToOn;
+            powered = ready && timer >= timeToOn;
             if(ready && !powered && animation != null) {animation.Play("Start");}
             if(powered && animation != null) {animation.Play("Active");}
         }

@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461e35782f328984a96b2c6d7a34bd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
+  interact: {fileID: 0}
   timeToFlip: 0.8
 --- !u!111 &7655065721292287644
 Animation:
@@ -178,8 +178,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 0.8
+  hasPower: 0
   powered: 0
-  parentCharger: {fileID: 0}
+  parentChargers: []
 --- !u!1 &8806314250913962823
 GameObject:
   m_ObjectHideFlags: 0
