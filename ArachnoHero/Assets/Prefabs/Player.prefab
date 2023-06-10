@@ -381,10 +381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702f599443670e84b97e479ee465238f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 40
+  maxSpeed: 25
   stillFriction: 10
   movingFriction: 0
-  jumpForce: 7
+  jumpForce: 6
   midairControl: 0.5
   checkDistance: 0.001
   jumpMask:
@@ -453,4 +453,4 @@ MonoBehaviour:
   grappleStrength: 10
   grappleShrink: 0.1
   idealModifier: 0.8
-  energyUsed: 2
+  energyUsed: 5
