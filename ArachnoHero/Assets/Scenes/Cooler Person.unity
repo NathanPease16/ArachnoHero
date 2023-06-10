@@ -1816,6 +1816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rechargeRate: 10
+  timeToOn: 0
   powered: 0
   parentCharger: {fileID: 0}
 --- !u!33 &1863682929003043571
