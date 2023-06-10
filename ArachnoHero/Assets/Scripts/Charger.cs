@@ -14,6 +14,7 @@ public class Charger : MonoBehaviour
     public bool Powered { get { return powered; } set { powered = value; } }
 
     [Header("References")]
+    [SerializeField] private GameObject parentCharger;
     private Energy energy;
 
     void Awake()
@@ -42,6 +43,10 @@ public class Charger : MonoBehaviour
         if (playerInRadius && powered)
         {
             energy.Charge(rechargeRate * Time.deltaTime);
+        }
+
+        if(parentCharger != null) {
+            powered = parentCharger.GetComponent<Charger>().Powered;
         }
     }
 }
