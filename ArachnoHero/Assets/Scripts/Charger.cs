@@ -6,6 +6,7 @@ public class Charger : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private float rechargeRate;
+    [SerializeField] private float timeToOn;
 
     [Header("States")]
     [SerializeField] private bool powered;
@@ -17,9 +18,13 @@ public class Charger : MonoBehaviour
     [SerializeField] private GameObject parentCharger;
     private Energy energy;
 
+    // Variables
+    private float timer;
+
     void Awake()
     {
         energy = GameObject.Find("Player").GetComponent<Energy>();
+        timer = 0;
     }
 
     void OnTriggerEnter(Collider other) 
@@ -40,13 +45,17 @@ public class Charger : MonoBehaviour
 
     void Update()
     {
+        
+
         if (playerInRadius && powered)
         {
             energy.Charge(rechargeRate * Time.deltaTime);
         }
 
         if(parentCharger != null) {
-            powered = parentCharger.GetComponent<Charger>().Powered;
+            timer += Time.deltaTime;
+
+            if(timer > timeToOn) {powered = parentCharger.GetComponent<Charger>().Powered;}
         }
     }
 }
