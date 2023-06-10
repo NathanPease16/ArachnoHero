@@ -19,6 +19,7 @@ public class PlayerWave : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage);
+
             Destroy(gameObject);
         }
     }
