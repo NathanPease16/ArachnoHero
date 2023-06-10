@@ -20,6 +20,7 @@ public class Grappling : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private ParticleSystem particles;
+    public bool grappleStopped { get; private set; }
     private new Rigidbody rigidbody;
     private new Transform camera;
     private Energy energy;
@@ -63,6 +64,7 @@ public class Grappling : MonoBehaviour
 
     private void StartStopGrapple()
     {
+        grappleStopped = false;
         // Start
         if(Input.GetMouseButtonDown(1) && grapplePoint == Vector3.zero) {
             if(Physics.Raycast(camera.position, camera.forward, out grappleHit, maxGrappleDist, grappleMask, QueryTriggerInteraction.Ignore)) {
@@ -79,7 +81,8 @@ public class Grappling : MonoBehaviour
         }
 
         // Stop
-        if(!(Input.GetMouseButton(1) && energy.HasEnoughEnergy(energyUsed))) {
+        if(grapplePoint != Vector3.zero && !(Input.GetMouseButton(1) && energy.HasEnoughEnergy(energyUsed))) {
+            grappleStopped = true;
             grapplePoint = Vector3.zero;
             line.positionCount = 0;
         }
@@ -106,7 +109,12 @@ public class Grappling : MonoBehaviour
 
     public bool CanGrapple()
     {
-        return Physics.Raycast(origin: camera.position, direction: camera.forward, maxDistance: maxGrappleDist);
+        RaycastHit hit;
+        if(Physics.Raycast(origin: camera.position, direction: camera.forward, hitInfo: out hit, maxDistance: maxGrappleDist))
+            if(hit.transform.gameObject.GetComponent<Charger>())
+                return hit.transform.gameObject.GetComponent<Charger>().Powered;
+        
+        return false;
     }
 
     public bool IsGrappling()

@@ -19,13 +19,14 @@ public class CrosshairUI : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
         bool wasLocked = isLocked;
+        bool wasGrappling = grapple.IsGrappling();
         isLocked = grapple.CanGrapple();
         if(grapple.IsGrappling()) {
             anim.Play("CrosshairActive");
         } else {
-            if(wasLocked != isLocked) {
+            if(wasLocked != isLocked || grapple.grappleStopped) {
                 if(isLocked) {anim.Play("CrosshairLock");}
                 else {anim.Play("CrosshairUnlock");}
             }

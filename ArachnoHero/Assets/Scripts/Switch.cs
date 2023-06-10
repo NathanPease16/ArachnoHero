@@ -5,14 +5,12 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private Interact interact;
     private Animator animator;
-    private Energy energy;
     private Charger charger;
-    private GameObject fuse;
     private new Transform camera;
 
     [Header("Properties")]
-    [SerializeField] private float range;
     [SerializeField] private float timeToFlip;
     public bool canUse { get; private set; }
     public bool active { get; private set; }
@@ -24,16 +22,18 @@ public class Switch : MonoBehaviour
     {
         charger = GetComponent<Charger>();
         camera = Camera.main.transform;
+        Interact.OnUse += UseSwitch;
+        charger.hasPower = false;
     }
 
     void Update()
     {
-        RaycastHit switchHit;
         timer += Time.deltaTime;
-        if(Physics.Raycast(camera.position, camera.forward, out switchHit, range)) {
-            canUse = switchHit.transform.gameObject.GetComponent<Switch>() && timer > timeToFlip;
-        }
-        if(Input.GetKeyDown(KeyCode.F) && canUse) {
+    }
+
+    void UseSwitch(GameObject obj)
+    {
+        if(obj == gameObject && timer > timeToFlip) {
             timer = 0;
             active = !active;
             if(active) {
@@ -41,7 +41,7 @@ public class Switch : MonoBehaviour
             } else {
                 GetComponent<Animation>().Play("SwitchOff");
             }
-            charger.Powered = active;
+            charger.hasPower = active;
         }
     }
 }
