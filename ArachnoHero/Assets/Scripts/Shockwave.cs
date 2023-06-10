@@ -52,7 +52,8 @@ public class Shockwave : MonoBehaviour
                 rigidbody.AddForce(-weightedForward * shockForce, ForceMode.Force);
                 energy.UseEnergy(shockwaveEnergy);
 
-                GameObject shock = Instantiate(shockwave, transform.position, Quaternion.identity);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y + .6f, transform.position.z);
+                GameObject shock = Instantiate(shockwave, pos, Quaternion.identity);
                 Rigidbody shockRb = shock.GetComponent<Rigidbody>();
                 shockRb.velocity = camera.forward * shockwaveSpeed;
             }

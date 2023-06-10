@@ -13,12 +13,14 @@ public class Enemy : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private float health;
+    [SerializeField] private float damageFlashTime;
     [SerializeField] private float attackTime;
     [SerializeField] private float chaseDistance;
     [SerializeField] private float memoryDistance;
     [SerializeField] private float attackDistance;
     [SerializeField] private float speed;
     [SerializeField] private float turnSpeed;
+    [SerializeField] private bool dropsFuse;
 
     [Header("States")]
     private EnemyState state;
@@ -26,7 +28,9 @@ public class Enemy : MonoBehaviour
     private bool canSee;
 
     [Header("References")]
+    [SerializeField] private GameObject fuse;
     [SerializeField] private GameObject shockwave;
+    private Material material;
     private new Rigidbody rigidbody;
     private Transform player;
 
@@ -34,6 +38,8 @@ public class Enemy : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         player = GameObject.Find("Player").transform;
+
+        material = GetComponent<MeshRenderer>().material;
 
         state = EnemyState.idle;
         
@@ -43,6 +49,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+
+        StartCoroutine(DamageIndicator());
         
         if (health <= 0)
             Die();
@@ -50,6 +58,9 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        if (dropsFuse)
+            Instantiate(fuse, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 
@@ -92,11 +103,6 @@ public class Enemy : MonoBehaviour
         
         return EnemyState.idle;
     }
-
-    private void SpawnNegativeEnergyWave()
-    {
-
-    }
     
     private void LookAt(Vector3 pos)
     {
@@ -105,5 +111,15 @@ public class Enemy : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
+    }
+
+    private IEnumerator DamageIndicator()
+    {
+        Color highlight = material.GetColor("_Highlight");
+        material.SetColor("_Highlight", Color.black);
+
+        yield return new WaitForSeconds(damageFlashTime);
+
+        material.SetColor("_Highlight", highlight);
     }
 }
