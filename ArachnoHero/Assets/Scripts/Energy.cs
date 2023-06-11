@@ -12,6 +12,7 @@ public class Energy : MonoBehaviour
 
     [Header("References")]
     private new Transform transform;
+    private GameObject fuseSprite;
 
     public float MaxEnergy { get {return maxEnergy; } }
     public float CurrentEnergy { get { return currentEnergy; } }
@@ -23,6 +24,7 @@ public class Energy : MonoBehaviour
     void Awake()
     {
         currentEnergy = maxEnergy;
+        fuseSprite = GameObject.Find("Canvas").transform.Find("Fuse").gameObject;
     }
 
     void Start()
@@ -33,9 +35,10 @@ public class Energy : MonoBehaviour
 
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.R)) {
-        //    transform.position = respawnPosition;
-        //}
+        if (hasFuse)
+            fuseSprite.SetActive(true);
+        else
+            fuseSprite.SetActive(false);
     }
 
     public void UseEnergy(float amount)
