@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 0
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 1
   powered: 0
   parentChargers:
@@ -573,6 +575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 30
   timeToOn: 3
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 1
   powered: 0
   parentChargers:
@@ -819,6 +823,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 0
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 1
   powered: 0
   parentChargers:
@@ -1135,6 +1141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 0
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 1
   powered: 0
   parentChargers:

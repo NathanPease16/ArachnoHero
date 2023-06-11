@@ -533,7 +533,6 @@ GameObject:
   - component: {fileID: 7793017386624461193}
   - component: {fileID: 7793017386624461192}
   - component: {fileID: 7793017386624461239}
-  - component: {fileID: 6411319886556913011}
   - component: {fileID: 631258004753377468}
   - component: {fileID: 6782986675445717442}
   m_Layer: 0
@@ -626,23 +625,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6411319886556913011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7793017386624461238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 0
-  priority: 0
-  blendDistance: 16
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 51a43fb4e78c4fc4d96f8bf484146ea9, type: 2}
 --- !u!114 &631258004753377468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 0.2
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 1
   powered: 0
   parentChargers: []
