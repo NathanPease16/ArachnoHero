@@ -418,6 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPositions:
   - {x: 10, y: 7.5, z: -14}
+  - {x: 22, y: 3.75, z: -15}
   maxSpeed: 25
   stillFriction: 10
   movingFriction: 0

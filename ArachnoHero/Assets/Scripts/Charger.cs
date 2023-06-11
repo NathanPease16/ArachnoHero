@@ -6,6 +6,7 @@ public class Charger : MonoBehaviour
 {
     [Header("Attributes")]
     private new Animation animation;
+    public bool unGrappleable;
     [SerializeField] private float rechargeRate;
     [SerializeField] private float timeToOn;
     [SerializeField] private bool isCheckpoint;
@@ -24,6 +25,11 @@ public class Charger : MonoBehaviour
 
     // Variables
     private float timer;
+
+    public bool CanGrapple()
+    {
+        return powered && !unGrappleable;
+    }
 
     void Awake()
     {
