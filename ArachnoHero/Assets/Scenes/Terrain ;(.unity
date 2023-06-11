@@ -157,11 +157,11 @@ MonoBehaviour:
   discreteMesh: 1
   radius: 10
   spacing: 1
-  intensity: 1.5
-  coastIntensity: 2.3
-  zoom: 0.3
-  xPosition: 987.96
-  zPosition: 90.35
+  intensity: 1.21
+  coastIntensity: 3.29
+  zoom: 0.12
+  xPosition: -2214.6
+  zPosition: 6035.2
   terrainData:
   - material: {fileID: 2100000, guid: a16d63c955c89f441aca1809bcc2cfc4, type: 2}
     height: 0
