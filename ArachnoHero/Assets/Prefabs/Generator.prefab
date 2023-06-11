@@ -380,7 +380,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: b1aca2fd1d74e7149b22f20d0d7bb626, type: 3}
+  - {fileID: 2100000, guid: 43237bc038546d84c8bd31c2abf9a911, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -428,6 +428,8 @@ GameObject:
   - component: {fileID: 7660774990592369687}
   - component: {fileID: 3218074787566321030}
   - component: {fileID: 5124874156517792397}
+  - component: {fileID: 5568349920866434855}
+  - component: {fileID: 4851976601730636797}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -478,7 +480,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7d8bd320189c628459dbbe2a4eb4d4cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -514,6 +516,43 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: b1aca2fd1d74e7149b22f20d0d7bb626, type: 3}
+--- !u!114 &5568349920866434855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595625071642320775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d50c9ce486a9144817a03a76fbfc0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rechargeRate: 0
+  timeToOn: 0
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
+  hasPower: 1
+  powered: 0
+  parentChargers:
+  - {fileID: 5463406141629588166}
+--- !u!114 &4851976601730636797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595625071642320775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa956e532c96482408d94a651446aec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickers: 0
+  lights: []
+  emissive: 1
+  offMaterial: {fileID: 2100000, guid: 7d8bd320189c628459dbbe2a4eb4d4cf, type: 2}
+  onMaterial: {fileID: 2100000, guid: 982eb0622f9a8e245ac77c2163a380c4, type: 2}
 --- !u!1 &5463406141629588166
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +728,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: b1aca2fd1d74e7149b22f20d0d7bb626, type: 3}
+  - {fileID: 2100000, guid: c0b06ae59ce78164dbdc1057b8ed597f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

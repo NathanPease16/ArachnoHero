@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417156517584481281}
-  m_Mesh: {fileID: -1550514412580984892, guid: a818d90dbd332914883397a961ac1efa, type: 3}
+  m_Mesh: {fileID: -1550514412580984892, guid: 46d1e4c6c52e99643aa7139970b27806, type: 3}
 --- !u!23 &545982520937450025
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707312455593307636}
-  m_Mesh: {fileID: 4493585093827132993, guid: a818d90dbd332914883397a961ac1efa, type: 3}
+  m_Mesh: {fileID: 4493585093827132993, guid: 46d1e4c6c52e99643aa7139970b27806, type: 3}
 --- !u!23 &1927247832146792437
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -233,6 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 0
   timeToOn: 1
+  isCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 1
   powered: 0
   parentChargers: []
