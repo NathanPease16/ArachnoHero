@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28239233}
   m_LocalRotation: {x: 0.000000044703736, y: -0.83596736, z: -0.00000006809818, w: 0.54877925}
-  m_LocalPosition: {x: 184.8, y: -2.254603, z: 124.2}
+  m_LocalPosition: {x: 184.8, y: -2.5, z: 124.2}
   m_LocalScale: {x: 300.00012, y: 3, z: 250.00008}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3728,7 +3728,7 @@ GameObject:
   - component: {fileID: 669114700}
   - component: {fileID: 669114699}
   - component: {fileID: 669114698}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3748,10 +3748,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPosition: {x: -100.1, y: -2, z: -206.6}
-  targetPosition: {x: -100.1, y: 2.1, z: -206.6}
+  targetPosition: {x: -100.1, y: 0, z: -206.6}
   initialRotation: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0}
-  time: 20
+  time: 4
 --- !u!114 &669114699
 MonoBehaviour:
   m_ObjectHideFlags: 0

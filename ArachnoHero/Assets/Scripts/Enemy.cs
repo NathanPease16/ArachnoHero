@@ -20,7 +20,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackDistance;
     [SerializeField] private float speed;
     [SerializeField] private float turnSpeed;
+    [SerializeField] private float FuseHeight;
     [SerializeField] private bool dropsFuse;
+    [SerializeField] private LayerMask floorMask;
 
     [Header("States")]
     private EnemyState state;
@@ -59,7 +61,13 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         if (dropsFuse)
-            Instantiate(fuse, transform.position, Quaternion.identity);
+        {
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, floorMask);
+            Vector3 pos = hit.point;
+            pos.y += FuseHeight;
+            Instantiate(fuse, pos, Quaternion.identity);
+        }
 
         Destroy(gameObject);
     }

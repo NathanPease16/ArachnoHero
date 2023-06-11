@@ -47,7 +47,7 @@ public class Energy : MonoBehaviour
         }
         if(currentEnergy == 0) {
             transform.position = respawnPosition;
-            currentEnergy = maxEnergy;
+            Charge(maxEnergy);
         }
     }
 
