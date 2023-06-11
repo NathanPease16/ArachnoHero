@@ -8,6 +8,8 @@ public class Charger : MonoBehaviour
     private new Animation animation;
     [SerializeField] private float rechargeRate;
     [SerializeField] private float timeToOn;
+    [SerializeField] private bool isCheckpoint;
+    [SerializeField] private Vector3 respawnPosition;
 
     [Header("States")]
     public bool hasPower;
@@ -54,6 +56,8 @@ public class Charger : MonoBehaviour
         if (playerInRadius && powered)
         {
             energy.Charge(rechargeRate * Time.deltaTime);
+            if(isCheckpoint)
+                energy.respawnPosition = respawnPosition;
         }
 
         if(parentChargers.Count == 0) {

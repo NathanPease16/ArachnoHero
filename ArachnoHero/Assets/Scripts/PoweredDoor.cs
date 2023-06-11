@@ -35,7 +35,6 @@ public class PoweredDoor : MonoBehaviour
         isOn = charger.powered;
         if(wasOn != isOn) {
             if(isOn) {
-                Debug.Log("aaa");
                 animator.Play("Open");
             } else {
                 animator.Play("Close");
