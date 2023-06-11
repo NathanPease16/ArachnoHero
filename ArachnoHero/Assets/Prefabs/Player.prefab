@@ -457,6 +457,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnergy: 100
   respawnPosition: {x: 0, y: 0, z: 0}
+  damageSources:
+    serializedVersion: 2
+    m_Bits: 16
   currentEnergy: 0
   hasFuse: 0
 --- !u!114 &7568586444584339211
@@ -471,9 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cf2d736d3b6b44bae257b6f274e246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shockForce: 250
+  shockForce: 175
   shockwaveSpeed: 80
-  shockwaveEnergy: 10
+  shockwaveEnergy: 20
   dashEnergy: 20
   weight: {x: 3.5, y: 1, z: 3.5}
   shockwave: {fileID: 6195301673877428511, guid: bb125ceb50558484798faf77f9587c70,

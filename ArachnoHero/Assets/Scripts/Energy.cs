@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Energy : MonoBehaviour
@@ -5,6 +7,7 @@ public class Energy : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float maxEnergy;
     [SerializeField] public Vector3 respawnPosition;
+    [SerializeField] public LayerMask damageSources;
 
     [Header("States")]
     [SerializeField]  float currentEnergy;
@@ -33,9 +36,19 @@ public class Energy : MonoBehaviour
 
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.R)) {
-        //    transform.position = respawnPosition;
-        //}
+        Debug.Log(Damaged());
+        if(Damaged()) {
+            UseEnergy(50*Time.deltaTime);
+        }
+        if(currentEnergy == 0) {
+            transform.position = respawnPosition;
+            currentEnergy = maxEnergy;
+        }
+    }
+
+    private bool Damaged()
+    {
+        return Physics.CheckCapsule(transform.position + Vector3.up*.5f, transform.position + Vector3.down*.6f, .6f, damageSources);
     }
 
     public void UseEnergy(float amount)
