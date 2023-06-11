@@ -9,9 +9,8 @@ public class Breaker : MonoBehaviour
     private Energy energy;
     private Charger charger;
     public GameObject fuse { get; private set; }
-    private GameObject red;
-    private GameObject green;
-    private GameObject fuse;
+    //private GameObject red;
+    //private GameObject green;
 
     void Awake()
     {
@@ -21,14 +20,14 @@ public class Breaker : MonoBehaviour
         fuse = transform.Find("Fuse").gameObject;
         Interact.OnUse += UseBox;
 
-        red = GameObject.Find("RedLight");
-        green = GameObject.Find("GreenLight");
+        //red = GameObject.Find("RedLight");
+        //green = GameObject.Find("GreenLight");
     }
 
     void Start()
     {
         fuse.SetActive(false);
-        green.SetActive(false);
+        //green.SetActive(false);
     }
 
     void UseBox(GameObject obj)
@@ -36,14 +35,14 @@ public class Breaker : MonoBehaviour
         if(obj == gameObject) {
             if(energy.HasFuse && !fuse.activeSelf) {
                 fuse.SetActive(true);
-                red.SetActive(false);
-                green.SetActive(true);
+                //red.SetActive(false);
+                //green.SetActive(true);
                 charger.hasPower = true;
                 energy.HasFuse = false;
             } else if(!energy.HasFuse && fuse.activeSelf) {
                 fuse.SetActive(false);
-                red.SetActive(true);
-                green.SetActive(false);
+                //red.SetActive(true);
+                //green.SetActive(false);
                 charger.hasPower = false;
                 energy.HasFuse = true;
             }
