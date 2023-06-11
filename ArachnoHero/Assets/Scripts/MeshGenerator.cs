@@ -9,9 +9,10 @@ public class MeshGenerator : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private bool discreteMesh;
-    [SerializeField] private int xSize;
-    [SerializeField] private int zSize;
+    [SerializeField] private float radius;
+    [SerializeField] private float spacing;
     [SerializeField] private float intensity;
+    [SerializeField] private float coastIntensity;
     [SerializeField] private float zoom;
     [SerializeField] private float xPosition;
     [SerializeField] private float zPosition;
@@ -21,21 +22,20 @@ public class MeshGenerator : MonoBehaviour
 
     [Header("Data")]
     private Vector3[] vertices;
-    //private int[] triangles;
     private List<int>[] triangles;
 
     [Header("References")]
     private new MeshRenderer renderer;
-
-    Vector3[] points;
-    List<int>[] triangles2;
 
     void Start()
     {
         mesh = new Mesh();
         renderer = GetComponent<MeshRenderer>();
         GetComponent<MeshFilter>().mesh = mesh;
+
+        Debug.Log(terrainData.Length);
         triangles = new List<int>[terrainData.Length];
+        Debug.Log(triangles.Length);
 
         for (int i = 0; i < triangles.Length; i++)
             triangles[i] = new List<int>();
@@ -43,40 +43,41 @@ public class MeshGenerator : MonoBehaviour
         SortData(terrainData);
         
         Material[] materials = new Material[terrainData.Length];
+
         for (int i = 0; i < terrainData.Length; i++)
             materials[i] = terrainData[i].material;
 
         renderer.materials = materials;
 
         CreateShape();
-        if (discreteMesh)
-            //MakeMeshDiscrete(vertices, triangles);
         UpdateMesh();
+    }
 
+    void Update()
+    {
+    }
 
-
-
-
-
-
-        // skorlkee;
-        float radius = 10;
-        float spacing = 1;
-
+    private void CreateShape()
+    {
         float circumference = 2f * Mathf.PI * radius;
-        int numPoints = Mathf.CeilToInt((circumference / spacing) * (radius - 1));
+        int circumferencePoints = Mathf.CeilToInt((circumference / spacing));
 
-        float circumferencePoints = numPoints/(radius - 1);
+        List<Vector3> p = new List<Vector3>();
 
-        List<Vector3> ps = new List<Vector3>();
-
-        for (int i = 0; i < circumferencePoints - 1; i++)
+        for (int i = 0; i < circumferencePoints; i++)
         {
             float angle = Mathf.PI * 2f * i / (circumferencePoints - 1);
+
             float x = Mathf.Sin(angle) * radius;
             float z = Mathf.Cos(angle) * radius;
             float y = Mathf.PerlinNoise(x * zoom + xPosition, z * zoom + zPosition) * intensity;
-            ps.Add(new Vector3(x, y, z));
+
+            y -= (y * intensity);
+
+            if (y < -.4f)
+                y += .4f;
+
+            p.Add(new Vector3(x, y, z));
         }
 
         for (int i = 1; i < radius; i++)
@@ -84,70 +85,100 @@ public class MeshGenerator : MonoBehaviour
             for (int j = 0; j < circumferencePoints; j++)
             {
                 int index = j + (int)circumferencePoints * i;
-                Vector3 dir = -ps[j].normalized;
+                Vector3 dir = -p[j].normalized;
                 dir.y = 0;
-                Vector3 point = ps[j] + (dir * i);
+
+                Vector3 point = p[j] + (dir * i);
+
+                if (i == 1)
+                {
+                    float noise = Mathf.PerlinNoise(point.x * zoom + xPosition, point.z * zoom + zPosition) * intensity;
+
+                    if (point.x < 0)
+                        point.x -= noise;
+                    else
+                        point.x += noise;
+
+                    if (point.z < 0)
+                        point.z -= noise;
+                    else
+                        point.z += noise;
+                }
+
                 point.y = Mathf.PerlinNoise(point.x * zoom + xPosition, point.z * zoom + zPosition) * intensity;
-                ps.Add(point);
+
+                p.Add(point);
             }
         }
 
-        points = ps.ToArray();
+        for (int i = 0; i < circumferencePoints; i++)
+        {
+            Vector3 point = p[i];
 
-        triangles2 = new List<int>[points.Length];
+            float noise = Mathf.PerlinNoise(point.x * zoom + xPosition, point.z * zoom + zPosition) * coastIntensity;
 
-        for (int i = 0; i < triangles2.Length; i++)
-            triangles2[i] = new List<int>();
+            if (point.x < 0)
+                point.x -= noise;
+            else
+                point.x += noise;
+
+            if (point.z < 0)
+                point.z -= noise;
+            else
+                point.z += noise;
+
+            p[i] = point;
+        }
+
+        vertices = p.ToArray();
+
+        //triangles = new List<int>[vertices.Length];
+
+        for (int i = 0; i < triangles.Length; i++)
+            triangles[i] = new List<int>();
+        
+        for (int j = 0; j < vertices.Length - 1; j++)
+        {
+            for (int i = 0; i < terrainData.Length; i++)
+            {
+                if (vertices[j].y <= terrainData[i].height)
+                {
+                    Debug.Log(vertices[i].y);
+                    if ((int)circumferencePoints + j + 1 < vertices.Length)
+                    {
+                        triangles[i].Add(j);
+                        triangles[i].Add(j + 1);
+                        triangles[i].Add((int)circumferencePoints + j);
+                        triangles[i].Add((int)circumferencePoints + j);
+                        triangles[i].Add(j + 1);
+                        triangles[i].Add((int)circumferencePoints + j + 1);
+                    }
+                    else
+                    {
+                        triangles[i].Add(j);
+                        triangles[i].Add(j + 1);
+                        triangles[i].Add(vertices.Length - 1);
+                        triangles[i].Add(vertices.Length - 1);
+                        triangles[i].Add(j + 1);
+                        triangles[i].Add(vertices.Length - 1);
+                    }
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < terrainData.Length; i++)
+        {
+            if (vertices[i].y <= terrainData[i].height)
+            {
+                triangles[i].Add(0);
+                triangles[i].Add((int)circumferencePoints);
+                triangles[i].Add((int)circumferencePoints - 1);
+                break;
+            }
+        }
 
         /*
-        vert = 0;
-        triangles2[0].Add(vert);
-        triangles2[0].Add(vert + 1);
-        triangles2[0].Add((int)circumferencePoints + vert);
-        triangles2[0].Add((int)circumferencePoints + vert);
-        triangles2[0].Add(vert + 1);
-        triangles2[0].Add((int)circumferencePoints + vert + 1);
-        */
-
-        Debug.Log(circumferencePoints);
-        
-        int vert = 0;
-        for (int j = 0; j < points.Length - 1; j++)
-        {
-            if ((int)circumferencePoints + vert + 1 < points.Length)
-            {
-                triangles2[0].Add(vert);
-                triangles2[0].Add(vert + 1);
-                triangles2[0].Add((int)circumferencePoints + vert);
-                triangles2[0].Add((int)circumferencePoints + vert);
-                triangles2[0].Add(vert + 1);
-                triangles2[0].Add((int)circumferencePoints + vert + 1);
-            }
-            else
-            {
-                triangles2[0].Add(vert);
-                triangles2[0].Add(vert + 1);
-                //triangles2[0].Add((int)circumferencePoints + vert);
-                //triangles2[0].Add((int)circumferencePoints + vert);
-                triangles2[0].Add(points.Length - 1);
-                triangles2[0].Add(points.Length - 1);
-                triangles2[0].Add(vert + 1);
-                //triangles2[0].Add((int)circumferencePoints + vert + 1);
-                triangles2[0].Add(points.Length - 1);
-            }
-
-            vert++;
-        }
-
-        triangles2[0].Add(0);
-        triangles2[0].Add((int)circumferencePoints);
-        triangles2[0].Add((int)circumferencePoints - 1);
-
-        UpdateMesh2();
-}
-
-    private void CreateShape()
-    {
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
 
         for (int i = 0, z = 0; z <= zSize; z++)
@@ -197,6 +228,7 @@ public class MeshGenerator : MonoBehaviour
                 tris += 6;
             }
         }
+        */
     }
 
     private void SortData(TerrainData[] data)
@@ -215,20 +247,6 @@ public class MeshGenerator : MonoBehaviour
         }
     }
 
-    private void MakeMeshDiscrete(Vector3[] vert, int[] tri) 
-    {
-        Vector3[] vertDiscrete = new Vector3[tri.Length];
-        int[] triDiscrete = new int[tri.Length];
-        for (int i = 0; i < tri.Length; i++)
-        {
-            //vertDiscrete[i] = vert[triangles[i]];
-            triDiscrete[i] = i;
-        }
-
-        vertices = vertDiscrete;
-        //triangles = triDiscrete;
-    }
-
     private void UpdateMesh()
     {
         mesh.Clear();
@@ -236,29 +254,18 @@ public class MeshGenerator : MonoBehaviour
 
         mesh.subMeshCount = triangles.Length;
         
+        Debug.Log(triangles.Length);
         for (int i = 0; i < triangles.Length; i++)
         {
+            //if (triangles[i].ToArray().Length < 3) { continue; }
+            int[] arr = triangles[i].ToArray();
+
+            for (int j = 0; j < arr.Length; j++)
+            {
+                //Debug.Log(arr[j]);
+            }
+            Debug.Log("-----------");
             mesh.SetTriangles(triangles[i].ToArray(), i);
-        }
-
-        mesh.RecalculateNormals();
-    }
-
-    private void UpdateMesh2()
-    {
-        mesh.Clear();
-
-        mesh.Clear();
-        mesh.vertices = points;
-
-        mesh.subMeshCount = triangles2.Length;
-        
-        for (int i = 0; i < triangles2.Length; i++)
-        {
-            if (triangles2[i].ToArray().Length == 0)
-                continue;
-
-            mesh.SetTriangles(triangles2[i].ToArray(), i);
         }
 
         mesh.RecalculateNormals();
@@ -266,17 +273,13 @@ public class MeshGenerator : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (vertices == null || points == null) { return; }
+        if (vertices == null) { return; }
+
+        Gizmos.color = Color.green;
 
         for (int i = 0; i < vertices.Length; i++)
         {
-            //Gizmos.DrawSphere(vertices[i], .1f);
-        }
-
-        for (int i = 0; i < points.Length; i++)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(points[i], .1f);
+            Gizmos.DrawSphere(vertices[i], .1f);
         }
     }
 }

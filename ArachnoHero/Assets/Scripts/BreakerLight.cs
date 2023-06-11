@@ -8,7 +8,7 @@ public class BreakerLight : PoweredLight
 
     protected override void ManageLight()
     {
-        if(breaker.fuse.activeSelf) {
+        if(breaker.Fuse.activeSelf) {
             GetComponent<Renderer>().material = onMaterial;
         } else {
             GetComponent<Renderer>().material = offMaterial;

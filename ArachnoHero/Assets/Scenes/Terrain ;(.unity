@@ -155,16 +155,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   discreteMesh: 1
-  xSize: 20
-  zSize: 20
+  radius: 10
+  spacing: 1
   intensity: 1.5
+  coastIntensity: 2.3
   zoom: 0.3
   xPosition: 987.96
   zPosition: 90.35
   terrainData:
-  - material: {fileID: 2100000, guid: 225a12fea3fa25a4bb2fbfb13d6e9ccd, type: 2}
-    height: 0.55
-  - material: {fileID: 2100000, guid: ab2e3a064c80063439203ba7b1b8ed5f, type: 2}
+  - material: {fileID: 2100000, guid: a16d63c955c89f441aca1809bcc2cfc4, type: 2}
+    height: 0
+  - material: {fileID: 2100000, guid: a907cef3371f1ea4aac3ac62acc591d2, type: 2}
     height: 2
 --- !u!23 &249177210
 MeshRenderer:

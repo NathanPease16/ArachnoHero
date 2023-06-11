@@ -8,7 +8,7 @@ public class Breaker : MonoBehaviour
     private Animator animator;
     private Energy energy;
     private Charger charger;
-    public GameObject fuse { get; private set; }
+    public GameObject Fuse { get; private set; }
     private GameObject red;
     private GameObject green;
     private GameObject fuse;
