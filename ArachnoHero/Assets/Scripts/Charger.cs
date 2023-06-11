@@ -57,18 +57,21 @@ public class Charger : MonoBehaviour
         }
 
         if(parentChargers.Count == 0) {
+            bool wasPowered = powered;
             timer += (hasPower ? 1 : -1)*Time.deltaTime;
             timer = Mathf.Clamp(timer, 0, 2*timeToOn);
             powered = hasPower && timer >= timeToOn;
         } else if(parentChargers.Count == 1) {
+            bool wasPowered = powered;
             bool ready = parentChargers[0].GetComponent<Charger>().powered && hasPower;
-            if(name == "ElectricalBox") {Debug.Log(ready);}
             timer += (ready ? 1 : -1)*Time.deltaTime;
             timer = Mathf.Clamp(timer, 0, 2*timeToOn);
             powered = ready && timer >= timeToOn;
             if(ready && !powered && animation != null) {animation.Play("Start");}
             if(powered && animation != null) {animation.Play("Active");}
+            if(wasPowered != powered && animation != null) {animation.Stop(); animation.Play("Stop");}
         } else if(parentChargers.Count > 1) {
+            bool wasPowered = powered;
             bool allPowered = true;
             foreach(GameObject parent in parentChargers) {
                 if(!parent.GetComponent<Charger>().powered) {allPowered = false;}
@@ -79,6 +82,7 @@ public class Charger : MonoBehaviour
             powered = ready && timer >= timeToOn;
             if(ready && !powered && animation != null) {animation.Play("Start");}
             if(powered && animation != null) {animation.Play("Active");}
+            if(wasPowered != powered && animation != null) {animation.Stop(); animation.Play("Stop");}
         }
     }
 }

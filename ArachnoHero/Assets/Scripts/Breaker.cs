@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricalBox : MonoBehaviour
+public class Breaker : MonoBehaviour
 {
     [Header("References")]
     private Animator animator;
     private Energy energy;
     private Charger charger;
-    private GameObject fuse;
+    public GameObject fuse { get; private set; }
 
     void Awake()
     {
@@ -16,6 +16,7 @@ public class ElectricalBox : MonoBehaviour
         energy = GameObject.Find("Player").GetComponent<Energy>();
         charger = GetComponent<Charger>();
         fuse = transform.Find("Fuse").gameObject;
+        Interact.OnUse += UseBox;
     }
 
     void Start()
@@ -23,17 +24,26 @@ public class ElectricalBox : MonoBehaviour
         fuse.SetActive(false);
     }
 
+    void UseBox(GameObject obj)
+    {
+        if(obj == gameObject) {
+            if(energy.HasFuse && !fuse.activeSelf) {
+                fuse.SetActive(true);
+                charger.hasPower = true;
+                energy.HasFuse = false;
+            } else if(!energy.HasFuse && fuse.activeSelf) {
+                fuse.SetActive(false);
+                charger.hasPower = false;
+                energy.HasFuse = true;
+            }
+        }
+    }
+
     void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.Play("ElectricalBox_Open");
-
-            if (energy.HasFuse)
-                StartCoroutine(OpenWithFuse());
-            else
-                animator.Play("ElectricalBox_Open");
-            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).length);
+            animator.Play("Open");
         }
     }
 
@@ -41,17 +51,7 @@ public class ElectricalBox : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.Play("ElectricalBox_Close");
+            animator.Play("Close");
         }
-    }
-
-    private IEnumerator OpenWithFuse()
-    {
-        animator.Play("ElectricalBox_Open");
-
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        fuse.SetActive(true);
-        
-        charger.hasPower = true;
     }
 }

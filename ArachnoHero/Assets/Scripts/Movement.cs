@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -11,6 +13,7 @@ public class Movement : MonoBehaviour
 
     // Attributes
     [Header("Moving")]
+    [SerializeField] private List<Vector3> startPositions;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float stillFriction;
     [SerializeField] private float movingFriction;

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Interact interact;
     private Animator animator;
     private Charger charger;
     private new Transform camera;

@@ -9,10 +9,11 @@ public class PoweredLight : MonoBehaviour
     [SerializeField] private List<GameObject> lights;
     
     [Header("References")]
-    [SerializeField] private Material offMaterial;
-    [SerializeField] private Material onMaterial;
-    private Charger charger;
-    private new Renderer renderer;
+    [SerializeField] private bool emissive;
+    [SerializeField] protected Material offMaterial;
+    [SerializeField] protected Material onMaterial;
+    protected Charger charger;
+    protected new Renderer renderer;
 
     // Variables
     private bool wasOn;
@@ -21,16 +22,14 @@ public class PoweredLight : MonoBehaviour
     void Awake()
     {
         charger = GetComponent<Charger>();
-        renderer = GetComponent<Renderer>();
+        if(emissive) {renderer = GetComponent<Renderer>();}
         isOn = charger.powered;
     }
 
     void Start()
     {
-        if(isOn) {
-            renderer.material = onMaterial;
-        } else {
-            renderer.material = offMaterial;
+        if(emissive) {
+            renderer.material = (isOn ? onMaterial : offMaterial);
         }
         foreach(GameObject light in lights) {
             light.SetActive(isOn);
@@ -39,23 +38,24 @@ public class PoweredLight : MonoBehaviour
 
     void Update()
     {
-        wasOn = isOn;
-        isOn = charger.powered;
-        if(wasOn != isOn) {
-            if(isOn) {
-                renderer.material = onMaterial;
-            } else {
-                renderer.material = offMaterial;
-            }
-            foreach(GameObject light in lights) {
-                light.SetActive(isOn);
-            }
-        }
+        ManageLight();
 
         if(isOn && flickers) {
 
         }
     }
 
-
+    protected virtual void ManageLight()
+    {
+        wasOn = isOn;
+        isOn = charger.powered;
+        if(wasOn != isOn) {
+            if(emissive) {
+                renderer.material = (isOn ? onMaterial : offMaterial);
+            }
+            foreach(GameObject light in lights) {
+                light.SetActive(isOn);
+            }
+        }
+    }
 }

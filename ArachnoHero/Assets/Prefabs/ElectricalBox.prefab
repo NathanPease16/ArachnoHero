@@ -285,8 +285,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 3}
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 2.2}
 --- !u!114 &6505869315356640707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,8 +313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeRate: 10
   timeToOn: 0
+  hasPower: 0
   powered: 0
-  parentCharger: {fileID: 0}
+  parentChargers: []
 --- !u!65 &8536010959741074428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -326,8 +327,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.8}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.7}
+  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!1 &6505869315362930336
 GameObject:
   m_ObjectHideFlags: 0
