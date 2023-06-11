@@ -529,33 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f134d81fcf548ef4c89106070766549a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingDialogue:
-  - Hey! I'm Electrobuddy, I'll be helping you get started!
-  - First, let's go over all the input
-  - The most important thing to know is you use WASD to move and Space to jump
-  - Another important skill is interacting, the interact button is F
-  - Pressing left shift lets you dash
-  - Pressing the left mouse button launches an energy blast!
-  - This energy bast  can be used to damage enemies
-  - However you have to be careful, these two moves deplete your energy
-  - If you lose all your energy it's game over!
-  - Finally, you can right click to grapple
-  - However, this only works on some objects
-  - They have to be powered, you'll know if you can grapple to something if your
-    crosshair turns blue when looking at it
-  - 'Objects that can be powered include lights, breakers, generations, and more,
-    which brings me to my next concept: powering'
-  - As Electrohero, it is your job to save the power grid
-  - Around each level you will find breakers and generators
-  - The generators will be turned on by flicking both levers
-  - The breakers can be turned on by replacing their fuse, which can be found around
-    the map or dropped by enemies
-  - You also might notice wires connecting these objects
-  - These wires indicate connections, if multiple wires converge then they are all
-    required to power that point of convergence
-  - Wires can be used to open doors, turn on lights, etc!
-  - Let's see if you can get out of here with your newfound knowledge
-  - Good luck!
+  startingDialogue: []
   waitTime: 0.01
   endNotice: '[ENTER]'
 --- !u!1 &8917148464729504860

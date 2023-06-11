@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.036056757, g: 0.045142826, b: 0.06138457, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.036056705, g: 0.04514275, b: 0.061384488, a: 0.2}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2302,6 +2302,138 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.size
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[0]
+      value: Hey! I'm Electrobuddy, I'll be helping you get started!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[1]
+      value: First, let's go over all the input
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[2]
+      value: The most important thing to know is you use WASD to move and Space to
+        jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[3]
+      value: Another important skill is interacting, the interact button is F
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[4]
+      value: Pressing left shift lets you dash
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[5]
+      value: Pressing the left mouse button launches an energy blast!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[6]
+      value: This energy bast  can be used to damage enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[7]
+      value: However you have to be careful, these two moves deplete your energy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[8]
+      value: If you lose all your energy it's game over!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[9]
+      value: Finally, you can right click to grapple
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[10]
+      value: However, this only works on some objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[11]
+      value: They have to be powered, you'll know if you can grapple to something
+        if your crosshair turns blue when looking at it
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[12]
+      value: 'Objects that can be powered include lights, breakers, generations,
+        and more, which brings me to my next concept: powering'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[13]
+      value: As Electrohero, it is your job to save the power grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[14]
+      value: Around each level you will find breakers and generators
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[15]
+      value: The generators will be turned on by flicking both levers
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[16]
+      value: The breakers can be turned on by replacing their fuse, which can be
+        found around the map or dropped by enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[17]
+      value: You can also turn off the generators and breakers by removing the fuse
+        or turning off the levers
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[18]
+      value: Standing next to a powered breaker or generator will replenish your
+        energy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[19]
+      value: You also might notice wires connecting these objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[20]
+      value: These wires indicate connections, if multiple wires converge then they
+        are all required to power that point of convergence
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[21]
+      value: Wires can be used to open doors, turn on lights, etc!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[22]
+      value: Let's see if you can get out of here with your newfound knowledge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[23]
+      value: Good luck!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd0433931a0ccfe468de85ce849e826a, type: 3}
