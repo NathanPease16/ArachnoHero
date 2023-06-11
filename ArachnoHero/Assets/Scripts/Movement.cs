@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
         rigidbody.AddForce(deltaVelocity);
         if(rigidbody.velocity.magnitude > hardMaxVelocity) {
             rigidbody.AddForce(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
-            Debug.Log(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
+            //Debug.Log(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
             }
         
     }

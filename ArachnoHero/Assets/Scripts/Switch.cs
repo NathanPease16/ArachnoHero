@@ -25,6 +25,11 @@ public class Switch : MonoBehaviour
         charger.hasPower = false;
     }
 
+    void OnDestroy()
+    {
+        Interact.OnUse -= UseSwitch;
+    }
+
     void Update()
     {
         timer += Time.deltaTime;

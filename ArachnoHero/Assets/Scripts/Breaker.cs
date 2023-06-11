@@ -24,6 +24,11 @@ public class Breaker : MonoBehaviour
         //green = GameObject.Find("GreenLight");
     }
 
+    void OnDestroy()
+    {
+        Interact.OnUse -= UseBox;
+    }
+
     void Start()
     {
         fuse.SetActive(false);
