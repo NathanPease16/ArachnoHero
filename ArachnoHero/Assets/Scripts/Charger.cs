@@ -28,7 +28,7 @@ public class Charger : MonoBehaviour
     void Awake()
     {
         energy = GameObject.Find("Player").GetComponent<Energy>();
-        sparks = GameObject.Find("Sparks").GetComponent<ParticleSystem>();
+        sparks = GetComponentInChildren<ParticleSystem>();
         if(GetComponent<Animation>()) {animation = GetComponent<Animation>();}
         timer = 0;
     }
@@ -66,25 +66,38 @@ public class Charger : MonoBehaviour
         if(parentChargers.Count == 0) {
             bool wasPowered = powered;
             timer += (hasPower ? 1 : -1)*Time.deltaTime;
-            timer = Mathf.Clamp(timer, 0, 2*timeToOn);
+            timer = Mathf.Clamp(timer, 0, timeToOn);
             powered = hasPower && timer >= timeToOn;
+            if(powered) {
+                if(sparks != null && !hasSparked) {
+                    hasSparked = true;
+                    sparks.Play();
+                }
+            } else {
+                if (sparks != null)
+                    hasSparked = false;
+            }
         } else if(parentChargers.Count == 1) {
             bool wasPowered = powered;
             bool ready = parentChargers[0].GetComponent<Charger>().powered && hasPower;
             timer += (ready ? 1 : -1)*Time.deltaTime;
-            timer = Mathf.Clamp(timer, 0, 2*timeToOn);
+            timer = Mathf.Clamp(timer, 0, timeToOn);
             powered = ready && timer >= timeToOn;
             if(ready && !powered) 
             {
                 if (animation != null)
                     animation?.Play("Start");
+            }
+            if(powered) {
+                if(animation != null) {
+                    animation.Play("Active");
+                }
                 if (sparks != null && !hasSparked)
                 {
                     hasSparked = true;
                     sparks.Play();
                 }
             }
-            if(powered && animation != null) {animation.Play("Active");}
             if(wasPowered != powered) 
             {
                 if (animation != null)
@@ -103,19 +116,22 @@ public class Charger : MonoBehaviour
             }
             bool ready = allPowered && hasPower;
             timer += (ready ? 1 : -1)*Time.deltaTime;
-            timer = Mathf.Clamp(timer, 0, 2*timeToOn);
+            timer = Mathf.Clamp(timer, 0, timeToOn);
             powered = ready && timer >= timeToOn;
             if(ready && !powered) 
             {
                 if (animation != null)
                     animation.Play("Start");
+            }
+            if(powered) {
+                if(animation != null)
+                    animation.Play("Active");
                 if (sparks != null && !hasSparked)
                 {
                     sparks.Play();
                     hasSparked = true;
                 }
             }
-            if(powered && animation != null) {animation.Play("Active");}
             if(wasPowered != powered) 
             {
                 if (animation != null)

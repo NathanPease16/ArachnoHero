@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461e35782f328984a96b2c6d7a34bd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFlip: 0.8
+  timeToFlip: 0.5
 --- !u!111 &7655065721292287644
 Animation:
   m_ObjectHideFlags: 0
@@ -554,6 +554,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 314323750015141981, guid: 8bf046f440cf91b48a90858ce4d96104,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 314323750015141981, guid: 8bf046f440cf91b48a90858ce4d96104,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 314323750117390896, guid: 8bf046f440cf91b48a90858ce4d96104,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 314323750117390899, guid: 8bf046f440cf91b48a90858ce4d96104,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -573,6 +588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 314323751351450336, guid: 8bf046f440cf91b48a90858ce4d96104,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 314323751351450339, guid: 8bf046f440cf91b48a90858ce4d96104,
         type: 3}

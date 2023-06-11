@@ -42,7 +42,6 @@ public class Energy : MonoBehaviour
             fuseSprite.SetActive(true);
         else
             fuseSprite.SetActive(false);
-        Debug.Log(Damaged());
         if(Damaged()) {
             UseEnergy(50*Time.deltaTime);
         }
