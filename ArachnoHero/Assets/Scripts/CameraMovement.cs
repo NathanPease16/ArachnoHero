@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    // References
-    private Transform player;
-    private Transform mainCamera;
-
     [Header("Attributes")]
     [SerializeField] private float sensitivity;
     [SerializeField] private float maxRotation;
     [SerializeField] private float tiltRotation;
     [SerializeField] private float tiltSpeed;
+
+    [Header("References")] 
+    private Transform player;
+    private Transform mainCamera;
+    private PauseMenu menu;
 
     // Rotation
     private float xRotation;
@@ -21,6 +22,7 @@ public class CameraMovement : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         mainCamera = Camera.main.transform;
+        menu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
     void Start()
@@ -31,6 +33,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        if (menu.Paused) { return; }
         MoveCamera();
     }
 
