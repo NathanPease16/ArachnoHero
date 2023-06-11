@@ -122,7 +122,7 @@ MonoBehaviour:
   dropsFuse: 1
   floorMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 2147483647
   fuse: {fileID: 3777187035692346469, guid: 9efe59a777ddb594ca0dc3147debf275, type: 3}
   shockwave: {fileID: 6993416823023790270, guid: 4bfae2df30977a1488838775a53bc958,
     type: 3}
