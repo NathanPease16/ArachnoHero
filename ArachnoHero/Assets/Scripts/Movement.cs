@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     [Header("Moving")]
     [SerializeField] private List<Vector3> startPositions;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float hardMaxVelocity;
     [SerializeField] private float stillFriction;
     [SerializeField] private float movingFriction;
 
@@ -57,7 +58,10 @@ public class Movement : MonoBehaviour
             collider.material.dynamicFriction = movingFriction;
         }
         rigidbody.AddForce(deltaVelocity);
-        
+        if(rigidbody.velocity.magnitude > hardMaxVelocity) {
+            rigidbody.AddForce(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
+            Debug.Log(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
+            }
         
     }
 
