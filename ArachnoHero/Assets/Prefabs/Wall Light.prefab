@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 869451620517944494}
   - component: {fileID: 6463398279049221365}
+  - component: {fileID: 8309762311337152686}
   m_Layer: 0
   m_Name: Wall Light
   m_TagString: Untagged
@@ -137,6 +138,19 @@ MonoBehaviour:
   hasPower: 1
   powered: 0
   parentChargers: []
+--- !u!65 &8309762311337152686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530080091777811988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.7}
+  m_Center: {x: 0.125, y: 0, z: 0}
 --- !u!1 &772764095682774308
 GameObject:
   m_ObjectHideFlags: 0
