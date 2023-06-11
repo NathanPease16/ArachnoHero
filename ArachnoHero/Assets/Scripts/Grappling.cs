@@ -68,7 +68,7 @@ public class Grappling : MonoBehaviour
         // Start
         if(Input.GetMouseButtonDown(1) && grapplePoint == Vector3.zero) {
             if(Physics.Raycast(camera.position, camera.forward, out grappleHit, maxGrappleDist, grappleMask, QueryTriggerInteraction.Ignore)) {
-                if(grappleHit.transform.gameObject.GetComponent<Charger>() && grappleHit.transform.gameObject.GetComponent<Charger>().powered) {
+                if(grappleHit.transform.gameObject.GetComponent<Charger>() && grappleHit.transform.gameObject.GetComponent<Charger>().CanGrapple()) {
                     grapplePoint = grappleHit.point;
                     idealLength = grappleHit.distance*idealModifier;
                     line.positionCount = 2;
@@ -112,7 +112,7 @@ public class Grappling : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(camera.position, camera.forward, out hit, maxGrappleDist, grappleMask, QueryTriggerInteraction.Ignore))
             if(hit.transform.gameObject.GetComponent<Charger>())
-                return hit.transform.gameObject.GetComponent<Charger>().powered;
+                return hit.transform.gameObject.GetComponent<Charger>().CanGrapple();
         
         return false;
     }
