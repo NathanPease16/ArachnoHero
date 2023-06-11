@@ -38,10 +38,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RippleSlimness: 5
-    - _Ripple_Density: 7
-    - _Ripple_Slimness: 5
+    - _Ripple_Density: 8905.4
+    - _Ripple_Slimness: 8.7
     - _Ripple_Speed: 1
-    - _Wave_Intensity: 1.5
+    - _Wave_Intensity: 0.3
+    - _Wave_Scale: 1
     - _Wave_Speed: 0.1
     m_Colors:
     - _Base_Color: {r: 0.4481132, g: 0.78485763, b: 1, a: 1}
