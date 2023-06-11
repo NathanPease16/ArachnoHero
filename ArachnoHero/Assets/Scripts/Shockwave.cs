@@ -21,21 +21,20 @@ public class Shockwave : MonoBehaviour
     private new Rigidbody rigidbody;
     private new Transform camera;
     private Energy energy;
-
-    // Variables
-    private float currentTime;
+    private PauseMenu menu;
 
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         energy = GetComponent<Energy>();
         camera = Camera.main.transform;
+        menu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if(currentTime > 1f) {Shock();}
+        if (menu.Paused) { return; }
+        Shock();
     }
 
     private void Shock()
