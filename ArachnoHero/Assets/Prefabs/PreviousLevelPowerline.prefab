@@ -809,8 +809,7 @@ MonoBehaviour:
   respawnPosition: {x: 0, y: 0, z: 0}
   hasPower: 0
   powered: 0
-  parentChargers:
-  - {fileID: 0}
+  parentChargers: []
 --- !u!1001 &2383954478066879074
 PrefabInstance:
   m_ObjectHideFlags: 0
