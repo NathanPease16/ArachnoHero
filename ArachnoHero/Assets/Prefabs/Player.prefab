@@ -419,9 +419,9 @@ MonoBehaviour:
   startPositions:
   - {x: 10, y: 7.5, z: -14}
   - {x: 22, y: 3.75, z: -15}
-  - {x: -25.2, y: 2.5, z: -27.5}
+  - {x: -25, y: 2.5, z: -14.5}
   maxSpeed: 25
-  hardMaxVelocity: 0
+  hardMaxVelocity: 15
   stillFriction: 10
   movingFriction: 0
   jumpForce: 6
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cf2d736d3b6b44bae257b6f274e246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shockForce: 175
+  shockForce: 100
   shockwaveSpeed: 80
   shockwaveEnergy: 20
   dashEnergy: 20
