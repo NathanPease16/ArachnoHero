@@ -263,6 +263,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -2305,7 +2307,7 @@ PrefabInstance:
     - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
         type: 3}
       propertyPath: startingDialogue.Array.size
-      value: 24
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
         type: 3}
@@ -2427,11 +2429,26 @@ PrefabInstance:
     - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
         type: 3}
       propertyPath: startingDialogue.Array.data[22]
-      value: Let's see if you can get out of here with your newfound knowledge
+      value: At the end of each level is a large black powerline
       objectReference: {fileID: 0}
     - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
         type: 3}
       propertyPath: startingDialogue.Array.data[23]
+      value: Once the light next to it turns on, you know it has been powered
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[24]
+      value: To go to the next level, swing down the powerline
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[25]
+      value: Let's see if you can get out of here with your newfound knowledge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968366454670883295, guid: bd0433931a0ccfe468de85ce849e826a,
+        type: 3}
+      propertyPath: startingDialogue.Array.data[26]
       value: Good luck!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4751,6 +4768,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -6723,6 +6741,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -7088,6 +7107,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
