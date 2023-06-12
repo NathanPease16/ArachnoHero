@@ -12,16 +12,19 @@ public class PoweredLight : MonoBehaviour
     [SerializeField] private bool emissive;
     [SerializeField] protected Material offMaterial;
     [SerializeField] protected Material onMaterial;
+    private AudioSource lightOn;
     protected Charger charger;
     protected new Renderer renderer;
 
     // Variables
     private bool wasOn;
     private bool isOn;
+    private bool hasPlayedSound;
 
     void Awake()
     {
         charger = GetComponent<Charger>();
+        lightOn = GetComponent<AudioSource>();
         if(emissive) {renderer = GetComponent<Renderer>();}
         isOn = charger.powered;
     }

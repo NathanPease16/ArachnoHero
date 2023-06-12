@@ -10,6 +10,7 @@ public class BreakerLight : PoweredLight
     {
         if(breaker.fuse.activeSelf) {
             GetComponent<Renderer>().material = onMaterial;
+
         } else {
             GetComponent<Renderer>().material = offMaterial;
         }
