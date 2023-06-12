@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     private Transform groundCheck;
     private Grappling grapple;
     private AudioSource walkSfx;
+    private AudioSource windSfx;
     private PauseMenu pause;
 
     // Attributes
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float stillFriction;
     [SerializeField] private float movingFriction;
     [SerializeField] private float sfxEpsilon;
+    [SerializeField] private float windEpsilon;
 
     [Header("Jumping")]
     [SerializeField] private float jumpForce;
@@ -36,6 +38,7 @@ public class Movement : MonoBehaviour
         groundCheck = transform.Find("Ground Check");
         grapple = GetComponent<Grappling>();
         walkSfx = GetComponent<AudioSource>();
+        windSfx = groundCheck.GetComponent<AudioSource>();
         pause = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
@@ -67,14 +70,28 @@ public class Movement : MonoBehaviour
             rigidbody.AddForce(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
             //Debug.Log(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
             }
-
-        Vector3 velNoY = rigidbody.velocity;
-        velNoY.y = 0;
-
-        if (velNoY.magnitude >= sfxEpsilon && IsGrounded() && !walkSfx.isPlaying)
-            walkSfx.Play();
-        else if (velNoY.magnitude < sfxEpsilon || !IsGrounded() || pause.Paused)
+        
+        if (IsGrounded())
+        {
+            windSfx.Stop();
+            if (rigidbody.velocity.magnitude >= sfxEpsilon && !walkSfx.isPlaying)
+                walkSfx.Play();
+            else if (rigidbody.velocity.magnitude < sfxEpsilon || pause.Paused)
+                walkSfx.Stop();
+        }
+        else
+        {
             walkSfx.Stop();
+            if (rigidbody.velocity.magnitude >= windEpsilon && !windSfx.isPlaying)
+                windSfx.Play();
+            else if (rigidbody.velocity.magnitude < windEpsilon || pause.Paused)
+                windSfx.Stop();
+        }
+
+        //if (velNoY.magnitude >= sfxEpsilon && IsGrounded() && !walkSfx.isPlaying)
+            //walkSfx.Play();
+        //else if (velNoY.magnitude < sfxEpsilon || !IsGrounded() || pause.Paused)
+            //walkSfx.Stop();
         
     }
 
