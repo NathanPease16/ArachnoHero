@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     private Transform mainCamera;
     private Transform groundCheck;
     private Grappling grapple;
+    private AudioSource walkSfx;
+    private PauseMenu pause;
 
     // Attributes
     [Header("Moving")]
@@ -18,6 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float hardMaxVelocity;
     [SerializeField] private float stillFriction;
     [SerializeField] private float movingFriction;
+    [SerializeField] private float sfxEpsilon;
 
     [Header("Jumping")]
     [SerializeField] private float jumpForce;
@@ -32,6 +35,8 @@ public class Movement : MonoBehaviour
         mainCamera = Camera.main.transform;
         groundCheck = transform.Find("Ground Check");
         grapple = GetComponent<Grappling>();
+        walkSfx = GetComponent<AudioSource>();
+        pause = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
     void Update()
@@ -62,6 +67,14 @@ public class Movement : MonoBehaviour
             rigidbody.AddForce(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
             //Debug.Log(-1*Vector3.ClampMagnitude(rigidbody.velocity, hardMaxVelocity));
             }
+
+        Vector3 velNoY = rigidbody.velocity;
+        velNoY.y = 0;
+
+        if (velNoY.magnitude >= sfxEpsilon && IsGrounded() && !walkSfx.isPlaying)
+            walkSfx.Play();
+        else if (velNoY.magnitude < sfxEpsilon || !IsGrounded() || pause.Paused)
+            walkSfx.Stop();
         
     }
 

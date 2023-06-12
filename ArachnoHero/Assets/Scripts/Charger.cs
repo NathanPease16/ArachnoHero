@@ -22,9 +22,11 @@ public class Charger : MonoBehaviour
     [SerializeField] private List<GameObject> parentChargers;
     private ParticleSystem sparks;
     private Energy energy;
+    private AudioSource lightOn;
 
     // Variables
     private float timer;
+    private bool hasPlayedSound;
 
     public bool CanGrapple()
     {
@@ -36,11 +38,18 @@ public class Charger : MonoBehaviour
         energy = GameObject.Find("Player").GetComponent<Energy>();
         sparks = GetComponentInChildren<ParticleSystem>();
         if(GetComponent<Animation>()) {animation = GetComponent<Animation>();}
+        lightOn = GetComponent<AudioSource>();
         timer = 0;
     }
 
     void Start()
     {
+        if (powered)
+            Debug.Log(powered);
+
+        if (lightOn != null && (powered || (hasPower && parentChargers.Count < 1)))
+            hasPlayedSound = true;
+
         timer = 0;
     }
 
@@ -67,6 +76,20 @@ public class Charger : MonoBehaviour
             energy.Charge(rechargeRate * Time.deltaTime);
             if(isCheckpoint)
                 energy.respawnPosition = respawnPosition;
+        }
+
+        if (lightOn != null) 
+        {
+            if (powered && !lightOn.isPlaying && !hasPlayedSound)
+            {
+                lightOn.Play();
+                hasPlayedSound = true;
+            }
+            else if (!powered && !(hasPower && parentChargers.Count < 1))
+            {
+                lightOn.Stop();
+                hasPlayedSound = false;
+            }
         }
 
         if(parentChargers.Count == 0) {
