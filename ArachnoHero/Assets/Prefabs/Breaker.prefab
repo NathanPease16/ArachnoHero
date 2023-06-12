@@ -1049,6 +1049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ea2163038c5734ebed65d8b795516c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWithFuse: 0
 --- !u!65 &1359040276162445675
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1087,6 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d50c9ce486a9144817a03a76fbfc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unGrappleable: 0
   rechargeRate: 10
   timeToOn: 0
   isCheckpoint: 0
@@ -1461,6 +1463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d50c9ce486a9144817a03a76fbfc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unGrappleable: 0
   rechargeRate: 0
   timeToOn: 0
   isCheckpoint: 0
@@ -1748,6 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d50c9ce486a9144817a03a76fbfc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unGrappleable: 0
   rechargeRate: 0
   timeToOn: 0
   isCheckpoint: 0
