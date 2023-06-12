@@ -5,6 +5,7 @@ using UnityEngine;
 public class Breaker : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private bool startWithFuse;
     private Animator animator;
     private Energy energy;
     private Charger charger;
@@ -31,7 +32,7 @@ public class Breaker : MonoBehaviour
 
     void Start()
     {
-        fuse.SetActive(false);
+        fuse.SetActive(startWithFuse);
         //green.SetActive(false);
     }
 

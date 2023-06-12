@@ -420,6 +420,7 @@ MonoBehaviour:
   startPositions:
   - {x: 10, y: 7.5, z: -14}
   - {x: 22, y: 3.75, z: -15}
+  - {x: -25.2, y: 2.5, z: -27.5}
   maxSpeed: 25
   hardMaxVelocity: 0
   stillFriction: 10
@@ -519,6 +520,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6655d62d7e5501419093439ebc1714a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
   range: 3
 --- !u!114 &8968366454670883295
 MonoBehaviour:

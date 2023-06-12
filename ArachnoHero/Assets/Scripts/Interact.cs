@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interact : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private LayerMask interactMask;
     private new Transform camera;
 
     [Header("Properties")]
@@ -19,7 +20,7 @@ public class Interact : MonoBehaviour
 
     void Update() {
         RaycastHit hit;
-        if(Input.GetKeyDown(KeyCode.F) && Physics.Raycast(camera.position, camera.forward, out hit, range)) {
+        if(Input.GetKeyDown(KeyCode.F) && Physics.Raycast(camera.position, camera.forward, out hit, range, interactMask, QueryTriggerInteraction.Ignore)) {
             OnUse(hit.transform.gameObject);
         }
     }
