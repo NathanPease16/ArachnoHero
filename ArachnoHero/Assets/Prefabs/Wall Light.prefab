@@ -139,6 +139,7 @@ MonoBehaviour:
   timeToOn: 0.2
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 1
   hasPower: 1
   powered: 0
   parentChargers: []
@@ -539,6 +540,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -571,7 +573,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 867b01cf9b8edb14eac7e3b57ab65795, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d6877f7034538c54d9eb5321ed08987a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

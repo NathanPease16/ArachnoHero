@@ -11,6 +11,7 @@ public class Charger : MonoBehaviour
     [SerializeField] private float timeToOn;
     [SerializeField] private bool isCheckpoint;
     [SerializeField] private Vector3 respawnPosition;
+    [SerializeField] private bool playSound;
 
     [Header("States")]
     public bool hasPower;
@@ -80,12 +81,12 @@ public class Charger : MonoBehaviour
 
         if (lightOn != null) 
         {
-            if (powered && !lightOn.isPlaying && !hasPlayedSound)
+            if (powered && !lightOn.isPlaying && !hasPlayedSound && playSound)
             {
                 lightOn.Play();
                 hasPlayedSound = true;
             }
-            else if (!powered && !(hasPower && parentChargers.Count < 1))
+            else if (!powered && !(hasPower && parentChargers.Count < 1) && playSound)
             {
                 lightOn.Stop();
                 hasPlayedSound = false;

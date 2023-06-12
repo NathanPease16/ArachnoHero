@@ -10,11 +10,13 @@ public class GrappleEnergyEffect : MonoBehaviour
     private ParticleSystem.EmissionModule emissions;
     private ParticleSystem.ShapeModule shape;
     private LineRenderer line;
+    private AudioSource sfx;
 
     void Awake()
     {
         particles = GetComponent<ParticleSystem>();
         line = transform.parent.parent.GetComponent<LineRenderer>();
+        sfx = GetComponent<AudioSource>();
 
         emissions = particles.emission;
         shape = particles.shape;
@@ -37,6 +39,7 @@ public class GrappleEnergyEffect : MonoBehaviour
         if (line.positionCount < 2) 
         { 
             particles.Stop();
+            sfx.Stop();
             particles.Clear();
             return; 
         }
@@ -63,5 +66,7 @@ public class GrappleEnergyEffect : MonoBehaviour
         emissions.rateOverTime = curve;
 
         particles.Play();
+        if (!sfx.isPlaying)
+            sfx.Play();
     }
 }

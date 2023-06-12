@@ -8,6 +8,7 @@ public class Switch : MonoBehaviour
     private Animator animator;
     private Charger charger;
     private new Transform camera;
+    private AudioSource sfx;
 
     [Header("Properties")]
     [SerializeField] private float timeToFlip;
@@ -16,10 +17,12 @@ public class Switch : MonoBehaviour
 
     // Variables
     private float timer;
+    private bool hasPlayed;
 
     void Awake()
     {
         charger = GetComponent<Charger>();
+        sfx = GetComponent<AudioSource>();
         camera = Camera.main.transform;
         Interact.OnUse += UseSwitch;
         charger.hasPower = false;
@@ -42,8 +45,11 @@ public class Switch : MonoBehaviour
             active = !active;
             if(active) {
                 GetComponent<Animation>().Play("SwitchOn");
+                sfx.Play();
             } else {
                 GetComponent<Animation>().Play("SwitchOff");
+                sfx.Play();
+
             }
             charger.hasPower = active;
         }
