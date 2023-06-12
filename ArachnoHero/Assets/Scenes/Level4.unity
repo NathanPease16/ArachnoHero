@@ -1168,7 +1168,7 @@ PrefabInstance:
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
@@ -1424,7 +1424,7 @@ PrefabInstance:
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
@@ -1875,7 +1875,7 @@ PrefabInstance:
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
@@ -2419,6 +2419,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -2839,7 +2840,7 @@ PrefabInstance:
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
@@ -2923,7 +2924,7 @@ PrefabInstance:
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
@@ -3859,7 +3860,7 @@ PrefabInstance:
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5396663345195764251, guid: c1d0315913208424b9bddc501f6f5b2b,
         type: 3}
@@ -6604,6 +6605,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -8061,7 +8063,8 @@ GameObject:
   - component: {fileID: 543450652746676780}
   - component: {fileID: 3469287836596073865}
   - component: {fileID: 1711813856024887619}
-  m_Layer: 0
+  - component: {fileID: 3469287836596073866}
+  m_Layer: 3
   m_Name: Island5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8243,6 +8246,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149076664470}
   m_Mesh: {fileID: -5806793088446024079, guid: a7ff2f3f23a98c74eae9f84d4ff3f8c5, type: 3}
+--- !u!64 &3469287836596073866
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149076664470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5806793088446024079, guid: a7ff2f3f23a98c74eae9f84d4ff3f8c5, type: 3}
 --- !u!33 &3469287837131875354
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8380,6 +8397,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -8429,6 +8447,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
