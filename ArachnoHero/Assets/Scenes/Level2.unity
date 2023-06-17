@@ -803,6 +803,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -850,7 +851,7 @@ PrefabInstance:
     - target: {fileID: 4655097335497668732, guid: abb54ea9e14f96d4f8c355976c3268c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4655097335497668732, guid: abb54ea9e14f96d4f8c355976c3268c3,
         type: 3}
@@ -1039,7 +1040,7 @@ PrefabInstance:
     - target: {fileID: 390294590810619068, guid: 2d1a28d44f283bf45b8c39ece548a719,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 58.826004
+      value: 55.52
       objectReference: {fileID: 0}
     - target: {fileID: 390294590810619068, guid: 2d1a28d44f283bf45b8c39ece548a719,
         type: 3}
@@ -1335,6 +1336,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 0
   powered: 0
   parentChargers: []
@@ -1409,7 +1411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173447140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100.3, y: 30.47, z: -287.5}
+  m_LocalPosition: {x: -100.3, y: 27.163996, z: -287.5}
   m_LocalScale: {x: 6, y: 60, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1726,6 +1728,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers: []
@@ -2549,6 +2552,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -3350,6 +3354,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers: []
@@ -3483,6 +3488,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers: []
@@ -3619,6 +3625,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -3775,6 +3782,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -4029,6 +4037,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -4478,12 +4487,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2a8d496e4dc7fd14cb0cd2be4849b202, type: 2}
+      objectReference: {fileID: 2100000, guid: a16d63c955c89f441aca1809bcc2cfc4, type: 2}
     - target: {fileID: -7511558181221131132, guid: 4017c396f829c1d49b40261d78e48b6a,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 185e108fd4ed70d4f8db835015677364, type: 2}
+      objectReference: {fileID: 2100000, guid: a907cef3371f1ea4aac3ac62acc591d2, type: 2}
     - target: {fileID: 919132149155446097, guid: 4017c396f829c1d49b40261d78e48b6a,
         type: 3}
       propertyPath: m_Name
@@ -4773,12 +4782,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2a8d496e4dc7fd14cb0cd2be4849b202, type: 2}
+      objectReference: {fileID: 2100000, guid: a16d63c955c89f441aca1809bcc2cfc4, type: 2}
     - target: {fileID: -7511558181221131132, guid: 4017c396f829c1d49b40261d78e48b6a,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 185e108fd4ed70d4f8db835015677364, type: 2}
+      objectReference: {fileID: 2100000, guid: a907cef3371f1ea4aac3ac62acc591d2, type: 2}
     - target: {fileID: 919132149155446097, guid: 4017c396f829c1d49b40261d78e48b6a,
         type: 3}
       propertyPath: m_Name
@@ -5180,6 +5189,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -6012,8 +6022,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a8d496e4dc7fd14cb0cd2be4849b202, type: 2}
-  - {fileID: 2100000, guid: 185e108fd4ed70d4f8db835015677364, type: 2}
+  - {fileID: 2100000, guid: a16d63c955c89f441aca1809bcc2cfc4, type: 2}
+  - {fileID: 2100000, guid: a907cef3371f1ea4aac3ac62acc591d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6375,7 +6385,7 @@ PrefabInstance:
     - target: {fileID: 9014895729405199667, guid: 024804ba76d62d4469dc2a021da6c2ba,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9014895729405199667, guid: 024804ba76d62d4469dc2a021da6c2ba,
         type: 3}
@@ -6454,12 +6464,12 @@ PrefabInstance:
     - target: {fileID: 459882517942907487, guid: fd3b9b1bba763e941ac9b3e74bf652c6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.53
+      value: 10.73
       objectReference: {fileID: 0}
     - target: {fileID: 459882517942907487, guid: fd3b9b1bba763e941ac9b3e74bf652c6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -618.7
+      value: -624.9
       objectReference: {fileID: 0}
     - target: {fileID: 459882517942907487, guid: fd3b9b1bba763e941ac9b3e74bf652c6,
         type: 3}
@@ -6566,6 +6576,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -7612,6 +7623,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -8438,6 +8450,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers: []
@@ -9215,6 +9228,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -9397,6 +9411,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers: []
@@ -9519,6 +9534,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -9668,6 +9684,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers:
@@ -9880,6 +9897,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 0
   powered: 0
   parentChargers: []
@@ -9959,7 +9977,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2091704557 stripped
 Transform:
@@ -10138,8 +10156,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a8d496e4dc7fd14cb0cd2be4849b202, type: 2}
-  - {fileID: 2100000, guid: 185e108fd4ed70d4f8db835015677364, type: 2}
+  - {fileID: 2100000, guid: a16d63c955c89f441aca1809bcc2cfc4, type: 2}
+  - {fileID: 2100000, guid: a907cef3371f1ea4aac3ac62acc591d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10453,6 +10471,7 @@ MonoBehaviour:
   timeToOn: 0
   isCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  playSound: 0
   hasPower: 1
   powered: 0
   parentChargers: []

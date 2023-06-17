@@ -7,6 +7,8 @@ public class GoBack : MonoBehaviour
 {
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
     }
 }
